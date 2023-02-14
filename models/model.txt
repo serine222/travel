@@ -1,0 +1,105 @@
+const clientSchema = new Schema({
+  id_cli: int,
+ mot_de_passe: String,
+  nom_cli : String,
+prenom_cli: String,
+  adresse_cli : String,
+email_cli: String,
+  num_tel_cli : String,
+sexe_cli: String,
+  date_n_cli : String,
+validation: String,
+});
+
+
+const administrateurSchema = new Schema({
+ id_adm: int,
+ nom_adm: String,
+  prenom_adm : String,
+});
+
+
+const sejourSchema = new Schema({
+id_sej: int,
+id_hot: String,
+id_vol: String,
+id_train : String,
+id_crs: String,
+guide: String,
+typ_dmd: String,
+});
+
+const voitureSchema = new Schema({
+ id_vtr: int,
+pays_vtr: String,
+date_vtr : String,
+date_rest_vtr: String,
+prix_vtr: String,
+cmp_vtr: String,
+
+typ_dmd: String,
+});
+
+const hotelSchema = new Schema({
+ id_hot: int,
+adr_ hot: String,
+nom_hot: String,
+catg_hot: String,
+date_hot : date,
+
+nbr_per_hot: Entier,
+dure_hot: Entier,
+
+prix_hot:Double,
+typ_dmd: String,
+
+});
+
+const BilletTrainSchema = new Schema({
+id_train: int,
+dest_train: String,
+date_train: date,
+prix_train:Double,
+nbr_per_train: Entier,
+catg_billet_train: String,
+cmp_train: String,
+typ_dmd: String,
+});
+
+const volSchema = new Schema({
+id_vol: int,
+dest_vol: String,
+date_vol : date,
+catg_billet_vol: String,
+date_rtr_vol: date,
+nbr_per_vol: Entier,
+classe_vol: String,
+prix_vol:Double,
+cmp_vol: String,
+typ_dmd: String,
+});
+
+const croisiereSchema = new Schema({
+id_crs: int,
+dest_crs: String,
+date_crs : date,
+prix_crs:Double,
+nbr_per_crs: Entier,
+port_crs: String,
+cmp_crs : String,
+typ_dmd: String,
+
+});
+
+const offreSchema = new Schema({
+id-ofr: int,
+nom_ofr : String,
+ville_dep_ofr : String,
+date_dep_ofr : date,
+dest_ofr: String,
+dure_ofr: Entier,
+prix_ofr:Double,
+photo:Blob,
+typ_dmd: String,
+});
+
