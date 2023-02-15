@@ -5,15 +5,17 @@ const app = express();
 const port = 5000;
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
-app.use(express.static('public/css'))
-app.use(express.static('public/js'))
 
 
+app.use(express.urlencoded({ extended: true }));
+// const Vol = require("./models/volSchema");
+
+const Vol = require("./models/volSchema");
 
 //mongoose
 const mongoose = require('mongoose');
  
-mongoose.connect("mongodb://127.0.0.1:27017/blog")
+mongoose.connect("mongodb://127.0.0.1:27017/trevel")
   .then( result => {
 
     app.listen(port, () => {
@@ -51,6 +53,20 @@ app.get("/package", (req, res) => {
 
 app.get("/book", (req, res) => {
   res.render("book")
+});
+
+app.post("/book", (req, res) => {
+  
+  const vol= new Vol(req.body);
+  vol
+  .save()
+  .then((result) => {
+    res.redirect("/home");
+    console.log(req.body);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 });
 
 
