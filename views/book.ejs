@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
 
 <%- include("./partials/head") %> 
 <body>
@@ -10,22 +9,31 @@
 
 <!-- header section ends -->
 
-<div class="heading" style="background:url(images/header-bg-3.png) no-repeat">
+
+
+   
+
+<div class="heading m-max">
+  
    <h1>book now</h1>
 </div>
-
 <!-- booking section starts  -->
 
-<section class="booking">
+<section class="book-form" >
 
-   <h1 class="heading-title">book your trip!</h1>
+
+   <div class="heading m">
+      <span>book your trip!</span>
+    
+   </div>
+
+   
 
    <form action="/book" method="post" class="book-form">
 
-      <div class="flex">
          <div class="inputBox">
             <span>name :</span>
-            <input type="text" placeholder="enter your name" name="name_vol">
+            <input  type="text" placeholder="enter your name" name="name_vol">
          </div>
          <div class="inputBox">
             <span>email :</span>
@@ -55,7 +63,7 @@
             <span>leaving :</span>
             <input type="date" name="leaving_vol">
          </div>
-      </div>
+      
 
       <input type="submit" value="submit" class="btn" name="send">
 
@@ -66,36 +74,8 @@
 <!-- booking section ends -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- footer section starts  -->
 
 <%- include("./partials/footer") %>
 
 <!-- footer section ends -->
-
-
-
-
-
-
-
-
-
-
-
-</body>
-</html>

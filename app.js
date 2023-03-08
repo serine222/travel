@@ -45,9 +45,7 @@ app.get("/about", (req, res) => {
 
 
 
-app.get("/package", (req, res) => {
-  res.render("package",{mytitle: "package"})
-});
+
 
 app.get("/book", (req, res) => {
   res.render("book",{mytitle: "book"})
@@ -67,6 +65,23 @@ app.post("/book", (req, res) => {
     
   });
 });
+
+app.get("/destination", (req, res) => {
+  res.render("destination",{mytitle: "destination"})
+});
+
+app.get("/services", (req, res) => {
+  res.render("services",{mytitle: "services"})
+});
+
+app.get("/gallery", (req, res) => {
+  res.render("gallery",{mytitle: "gallery"})
+});
+
+app.get("/blogs", (req, res) => {
+  res.render("blogs",{mytitle: "blogs"})
+});
+
 
 
 //  404 
