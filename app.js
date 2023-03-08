@@ -36,23 +36,21 @@ app.get("/", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  res.render("home")
+  res.render("home",{mytitle: "HOME"})
 });
 
 app.get("/about", (req, res) => {
-  res.render("about")
+  res.render("about",{mytitle: "about"})
 });
 
-app.get("/html", (req, res) => {
-  res.render("index")
-});
+
 
 app.get("/package", (req, res) => {
-  res.render("package")
+  res.render("package",{mytitle: "package"})
 });
 
 app.get("/book", (req, res) => {
-  res.render("book")
+  res.render("book",{mytitle: "book"})
 });
 
 app.post("/book", (req, res) => {
@@ -66,6 +64,7 @@ app.post("/book", (req, res) => {
   })
   .catch((err) => {
     console.log(err);
+    
   });
 });
 
