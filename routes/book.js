@@ -1,30 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const Vol = require("../models/volSchema");
+// const Vol = require("../models/volSchema");
 
-router.get("/", (req, res) => {
-  res.render("book",{mytitle: "book"})
-});
+const BookController = require("../controllers/BookController");
 
 
+router.get("/", BookController.Book_index_get);
+router.get("/Book", BookController.Book_index_get);
 
 
+router.get("/all-Book", BookController.Book_all_get);
+
+router.post("/", BookController.Book_post);
 
 
+router.get("/:id", BookController.Book_details_get);
 
-router.post("/", (req, res) => {
-  
-  const vol= new Vol(req.body);
-  vol
-  .save()
-  .then((result) => {
-    res.redirect("/home");
-    console.log(req.body);
-  })
-  .catch((err) => {
-    console.log(err);
-    
-  });
-});
+router.delete("/:id", BookController.Book_delete);
+
 
 module.exports = router;

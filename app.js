@@ -60,6 +60,10 @@ app.get("/gallery", (req, res) => {
   res.render("gallery",{mytitle: "gallery"})
 });
 
+app.get("/review", (req, res) => {
+  res.render("review",{mytitle: "gallery"})
+});
+
 app.get("/blogs", (req, res) => {
   res.render("blogs",{mytitle: "blogs"})
 });

@@ -1,66 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const Trips = require("../models/aTripsSchema");
+// const Trips = require("../models/aTripsSchema");
 
-// PATH start with '/all-articles'
+const TripsController = require("../controllers/TripsController");
 
-router.get("/", (req, res) => {
-  // res.render("index", { mytitle: "HOME" });
 
-  // result = Array of objects inside mongo database
-
-  Trips.find()
-    .then((result) => {
-      res.render("Trips/Trips", { mytitle: "Trips", arrTrips: result });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.get("/",TripsController.Trips_index_get );
 
 
 
-router.post("/", (req, res) => {
-  const trips = new Trips(req.body);
-
-  // console.log(req.body)
-
-  trips
-    .save()
-    .then((result) => {
-      res.redirect("/Trips");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.post("/", TripsController.Trips_post);
 
 
 
-router.get("/:id", (req, res) => {
-  // result =   object  inside mongo database
-
-  Trips.findById(req.params.id)
-    .then((result) => {
-      res.render("Trips/details", { mytitle: "Trips DETAILS", objTrips: result });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.get("/:id", TripsController.Trips_details_get);
 
 
 
-router.delete("/:id", (req, res) => {
-  Trips.findByIdAndDelete(req.params.id)
-
-    .then((params) => {
-      res.json({ mylink: "/Trips" });
-    })
-
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.delete("/:id", TripsController.Trips_delete);
 
 module.exports = router;
