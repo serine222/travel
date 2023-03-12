@@ -243,6 +243,61 @@ section {
           flex: 1 1 15rem;
 }
 
+
+.Trips-form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: block;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.Trips-form form .inputBox {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25rem;
+          flex: 1 1 25rem;
+}
+
+.Trips-form form .inputBox span {
+  font-size: 2rem;
+  color: #aaa;
+}
+
+.Trips-form form .inputBox input {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border-radius: 5rem;
+  border: 0.2rem solid #29d9d5;
+  font-size: 1.6rem;
+  color: #aaa;
+  text-transform: none;
+  background: none;
+  margin-top: 1rem;
+}
+.Trips-form form .inputBox textarea {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border-radius: 5rem;
+  border: 0.2rem solid #29d9d5;
+  font-size: 1.6rem;
+  color: #aaa;
+  text-transform: none;
+  background: none;
+  margin-top: 1rem;
+  min-height: 169px;
+  padding: 19px 35px 0
+}
+
+.Trips-form form .btn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 15rem;
+          flex: 1 1 15rem;
+}
+
 .about {
   display: -webkit-box;
   display: -ms-flexbox;

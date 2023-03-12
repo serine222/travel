@@ -8,9 +8,12 @@ app.use(express.static('public'))
 
 
 app.use(express.urlencoded({ extended: true }));
-// const Vol = require("./models/volSchema");
 
-const Vol = require("./models/volSchema");
+const bookRouter = require("./routes/book");
+const TripsRouter = require("./routes/Trips");
+
+
+
 
 //mongoose
 const mongoose = require('mongoose');
@@ -45,27 +48,6 @@ app.get("/about", (req, res) => {
 
 
 
-
-
-app.get("/book", (req, res) => {
-  res.render("book",{mytitle: "book"})
-});
-
-app.post("/book", (req, res) => {
-  
-  const vol= new Vol(req.body);
-  vol
-  .save()
-  .then((result) => {
-    res.redirect("/home");
-    console.log(req.body);
-  })
-  .catch((err) => {
-    console.log(err);
-    
-  });
-});
-
 app.get("/destination", (req, res) => {
   res.render("destination",{mytitle: "destination"})
 });
@@ -80,6 +62,20 @@ app.get("/gallery", (req, res) => {
 
 app.get("/blogs", (req, res) => {
   res.render("blogs",{mytitle: "blogs"})
+});
+
+
+
+// booking PATH
+
+app.use("/book", bookRouter);
+
+// all-Trips PATH
+
+app.use("/Trips", TripsRouter);
+
+app.get("/add-new-Trips", (req, res) => {
+  res.render("Trips/add-new-Trips", { mytitle: "create new Trips" });
 });
 
 

@@ -1,0 +1,62 @@
+
+
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<%- include("../partials/header") %>
+
+<section class="Trips-form" >
+    <h1>Create new article</h1>
+
+    <div class="heading m">
+      <span>book your trip!</span>
+      <h1>Create new Trip</h1>
+   </div>
+
+
+
+    
+    <form method="POST" action="/Trips" >
+
+      <div class="inputBox">
+      <label for="title"> <span>Trips title: </span></label>
+      <input name="title" id="title" type="text" />
+    </div>
+
+
+    <div class="inputBox">
+      <label for="summary"> <span> summary:</span> </label>
+      <input name="summary" id="summary" type="text" />
+    </div>
+
+
+      <div class="inputBox">
+      <label for="body"><span> body:</span></label>
+      <textarea name="body" id="body"></textarea>
+    </div>
+
+
+      
+      <button class="btn">create</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->

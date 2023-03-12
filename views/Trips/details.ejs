@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <%- include("../partials/head") %>
+
+  
+
+
+<body>
+   
+<!-- header section starts  -->
+
+<%- include("../partials/header") %>
+
+
+
+<!-- header section ends -->
+
+<section class="about" >
+
+   <div class="video-container m" data-aos="fade-right" data-aos-delay="300">
+       <img src="/images/des-4.jpg" alt=""></img>
+     
+   </div>
+
+   <div class="content" data-aos="fade-left" data-aos-delay="600">
+       <span><%=objTrips.summary %></span>
+       <h3><%=objTrips.title %></h3>
+       <p> <%=objTrips.body %></p>
+       <!-- <a href="#" class="btn">read more</a> -->
+
+       <button data-linkid="<%= objTrips._id %>" class="btn create">
+        Delete this Trips
+    </button>
+
+</section>
+<%- include("../partials/footer.ejs") %>
+
+<script>
+    const btnelement = document.querySelector(".create")
+    const TripsId = btnelement.getAttribute("data-linkid");
+
+
+    //  what is data ?
+    // {mylink: "/Trips" }
+
+
+    btnelement.addEventListener("click", (eo) => {
+
+        fetch(`/Trips/${TripsId}`, { method: "DELETE" })
+            .then((response) => response.json())
+            .then((data) => window.location.href = data.mylink)
+            .catch((err) => {
+                console.log(err);
+            });
+    })
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer section starts  -->
+
+<%- include("./partials/footer") %>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
