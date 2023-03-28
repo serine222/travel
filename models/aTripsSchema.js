@@ -26,11 +26,11 @@ const aTripsSchema = new Schema(  {
       required: true
   },
 
-  }                        );
+  }   );
 
 
   // Create a model based on that schema
-const Trips = mongoose.model("Trips", 
+const Trips = mongoose.model("Trips", aTripsSchema
 );
   
 

@@ -64,6 +64,20 @@
             <span>leaving </span>
             <input type="date" name="leaving_vol">
          </div>
+
+         <div class="inputBox">
+            
+            <span>next trip </span>
+
+            <select class="custom-select mr-sm-2" name="Trips">
+                <option selected disabled> Trips</option>
+                <% arrTrips.forEach(item=> { %>
+            <option value='<%= item._id %>'>  <%= item.title %> </option>
+            
+            <% }); %>  
+            </select>
+            
+            </div>
       
 
       <input type="submit" value="submit" class="btn" name="send">

@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+
+
 // const Trips = require("../models/aTripsSchema");
 
 const TripsController = require("../controllers/TripsController");
@@ -18,5 +20,7 @@ router.get("/:id", TripsController.Trips_details_get);
 
 
 router.delete("/:id", TripsController.Trips_delete);
+
+
 
 module.exports = router;

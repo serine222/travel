@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
- 
+const Trips = require("../models/aTripsSchema");
 // define the Schema (the structure of the vol)
 const volSchema = new Schema({
   // id_vol: int,
@@ -30,12 +30,21 @@ const volSchema = new Schema({
     type: String,
     required: true
 },
-  prix_vol:Number,
+  prix_vol: {
+    type: Number,
+    required: true
+},
+
+
   location_vol: {
     type: String,
     required: true
 },
 
+Trips: {
+  type: Schema.Types.ObjectId,
+  ref: 'Trips'
+},
 created_at: {
   type: Date,
   required: true

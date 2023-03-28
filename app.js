@@ -15,23 +15,6 @@ const TripsRouter = require("./routes/Trips");
 
 
 
-//mongoose
-// const mongoose = require('mongoose');
- 
-// mongoose.connect("mongodb://127.0.0.1:27017/trevel")
-//   .then( result => {
-
-//     app.listen(port, () => {
-//         console.log(`Example app listening at http://localhost:${port}`);
-//       });
-//   })
-//   .catch( err => {
-//     console.log(err);
-//   }); 
-
-
-
-
 // router
 app.get("/", (req, res) => {
   res.redirect("/home");

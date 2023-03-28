@@ -5,7 +5,7 @@ const Trips = require("../models/aTripsSchema");
 
 const Trips_index_get = (req, res) => {
 
-    Trips.find()
+  Trips.find()
     .then((result) => {
       res.render("Trips/Trips", { mytitle: "Trips", arrTrips: result });
     })
@@ -17,6 +17,13 @@ const Trips_index_get = (req, res) => {
 const Trips_post = (req, res) => {
  
     const trips = new Trips(req.body);
+
+    let vol = new Vol({
+      title: req.body.title,
+      summary: req.body.summary,
+      bodyl: req.body.body,
+      created_at: Date.now()
+  })
 
     // console.log(req.body)
   
