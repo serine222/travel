@@ -4,14 +4,42 @@ const Schema = mongoose.Schema;
 // define the Schema (the structure of the vol)
 const volSchema = new Schema({
   // id_vol: int,
-  name_vol: String,
-  arrivals_vol : Date,
-  email_vol: String,
-  leaving_vol: Date,
-  phone_vol: Number,
-  address_vol: String,
+  name_vol: {
+    type: String,
+    required: true
+},
+  arrivals_vol : {
+    type:  Date,
+    required: true
+},
+  email_vol: {
+    type: String,
+    required: true
+},
+  leaving_vol:{
+    type:  Date,
+    required: true
+},
+
+  phone_vol:{
+    type: Number,
+    required: true
+},
+
+  address_vol: {
+    type: String,
+    required: true
+},
   prix_vol:Number,
-  location_vol: String,
+  location_vol: {
+    type: String,
+    required: true
+},
+
+created_at: {
+  type: Date,
+  required: true
+},
   // typ_dmd: String,
   });
  

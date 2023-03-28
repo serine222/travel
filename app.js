@@ -5,7 +5,7 @@ const app = express();
 const port = 5000;
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
-
+const db = require('./config/database')
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -16,18 +16,18 @@ const TripsRouter = require("./routes/Trips");
 
 
 //mongoose
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
  
-mongoose.connect("mongodb://127.0.0.1:27017/trevel")
-  .then( result => {
+// mongoose.connect("mongodb://127.0.0.1:27017/trevel")
+//   .then( result => {
 
-    app.listen(port, () => {
-        console.log(`Example app listening at http://localhost:${port}`);
-      });
-  })
-  .catch( err => {
-    console.log(err);
-  }); 
+//     app.listen(port, () => {
+//         console.log(`Example app listening at http://localhost:${port}`);
+//       });
+//   })
+//   .catch( err => {
+//     console.log(err);
+//   }); 
 
 
 
@@ -81,6 +81,13 @@ app.use("/Trips", TripsRouter);
 app.get("/add-new-Trips", (req, res) => {
   res.render("Trips/add-new-Trips", { mytitle: "create new Trips" });
 });
+
+
+app.listen(3000, ()=> {
+
+  console.log(' app is wokring on port 3000')
+})
+
 
 
 
