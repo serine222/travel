@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 
-// const Trips = require("../models/aTripsSchema");
+
 
 const TripsController = require("../controllers/TripsController");
 

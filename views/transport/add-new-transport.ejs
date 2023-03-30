@@ -1,0 +1,80 @@
+
+
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<%- include("../partials/header") %>
+
+<section class="Trips-form" >
+    
+
+    <div class="heading m">
+      <span> transport!</span>
+      <h1>Create new transport</h1>
+   </div>
+
+
+
+    
+    <form method="POST" action="/transport" >
+
+    
+      <div class="inputBox">
+      <label for="date_tra"> <span>date_tra </span></label>
+        <input name="date_tra" id="date_tra" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="date_rest_tra"> <span>date_rest_tra: </span></label>
+      <input name="date_rest_tra" id="date_rest_tra" type="date" />
+    </div>
+    <div class="inputBox">
+      <label for="prix_tra"> <span>transport prix_tra: </span></label>
+    <input name="prix_tra" id="prix_tra" type="number" />
+    </div>
+    <div class="inputBox">
+      <label for="cmp_tra"> <span>transport cmp_tra: </span></label>
+    <input name="cmp_tra" id="cmp_tra" type="date" />
+    </div>
+   
+    <div class="inputBox">
+            
+      <label for="typ_tra"> <span> type </span></label>
+
+      <select class="custom-select mr-sm-2" name="typ_tra">
+          <option selected disabled> type</option>
+          <% arrtyp_tra.forEach(item=> { %>
+      <option value='<%= item._id %>'>  <%= item.name %> </option>
+      
+      <% }); %>  
+      </select>
+      
+      </div>
+
+    
+      <button class="btn">create</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->
+
+
+
+

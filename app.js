@@ -11,6 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const bookRouter = require("./routes/book");
 const TripsRouter = require("./routes/Trips");
+const offreRouter = require("./routes/offre");
+const transportRouter = require("./routes/transport");
+
+
 
 
 
@@ -65,6 +69,18 @@ app.get("/add-new-Trips", (req, res) => {
   res.render("Trips/add-new-Trips", { mytitle: "create new Trips" });
 });
 
+// all-transport PATH
+app.use("/transport", transportRouter);
+app.get("/add-new-transport", (req, res) => {
+  res.render("transport/add-new-transport", { mytitle: "create new transport" });
+});
+
+
+// all-offre PATH
+app.use("/offre", offreRouter);
+app.get("/add-new-offre", (req, res) => {
+  res.render("offre/add-new-offre", { mytitle: "create new offre" });
+});
 
 app.listen(3000, ()=> {
 

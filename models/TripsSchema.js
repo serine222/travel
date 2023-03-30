@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 
 // define the Schema (the structure of the article)
-const aTripsSchema = new Schema(  {
+const TripsSchema = new Schema(  {
 
     title: {
       type: String,
@@ -30,7 +30,7 @@ const aTripsSchema = new Schema(  {
 
 
   // Create a model based on that schema
-const Trips = mongoose.model("Trips", aTripsSchema
+const Trips = mongoose.model("Trips", TripsSchema
 );
   
 

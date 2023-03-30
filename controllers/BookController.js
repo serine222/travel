@@ -1,5 +1,5 @@
 const Vol = require("../models/volSchema");
-const Trips = require("../models/aTripsSchema");
+const Trips = require("../models/TripsSchema");
 
 
 

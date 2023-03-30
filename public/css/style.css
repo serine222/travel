@@ -278,7 +278,26 @@ section {
   color: #aaa;
 }
 
+.Trips-form form .inputBox p {
+  color: #29d9d5;
+  font-size: 2rem;
+}
+
+
+
 .Trips-form form .inputBox input {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border-radius: 5rem;
+  border: 0.2rem solid #29d9d5;
+  font-size: 1.6rem;
+  color: #aaa;
+  text-transform: none;
+  background: none;
+  margin-top: 1rem;
+}
+
+.Trips-form form .inputBox select {
   width: 100%;
   padding: 1.2rem 1.4rem;
   border-radius: 5rem;

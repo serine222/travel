@@ -1,4 +1,4 @@
-const Trips = require("../models/aTripsSchema");
+const Trips = require("../models/TripsSchema");
 
 
 // article_create_get
@@ -16,9 +16,9 @@ const Trips_index_get = (req, res) => {
 
 const Trips_post = (req, res) => {
  
-    const trips = new Trips(req.body);
 
-    let vol = new Vol({
+
+    let trips = new Trips({
       title: req.body.title,
       summary: req.body.summary,
       bodyl: req.body.body,

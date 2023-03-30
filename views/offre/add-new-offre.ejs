@@ -1,0 +1,74 @@
+
+
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<%- include("../partials/header") %>
+
+<section class="Trips-form" >
+    <h1>Create new offre</h1>
+
+    <div class="heading m">
+      <span>book your offre!</span>
+      <h1>Create new offre</h1>
+   </div>
+
+
+
+    
+    <form method="POST" action="/offre">
+
+      <div class="inputBox">
+      <label for="nom_ofr"> <span>offres nom_ofr: </span></label>
+      <input name="nom_ofr" id="nom_ofr" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="ville_dep_ofr"> <span>offres ville_dep_ofr: </span></label>
+      <input name="ville_dep_ofr" id="ville_dep_ofr" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="date_dep_ofr"> <span>offres date_dep_ofr: </span></label>
+      <input name="date_dep_ofr" id="date_dep_ofr" type="Date" />
+    </div>
+    <div class="inputBox">
+      <label for="dest_ofr"> <span>offres dest_ofr: </span></label>
+      <input name="dest_ofr" id="dest_ofr" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="dure_ofr"> <span>offres dure_ofr: </span></label>
+      <input name="dure_ofr" id="dure_ofr" type="Number" />
+    </div>
+   
+    <div class="inputBox">
+      <label for="prix_ofr"> <span>offres prix_ofr: </span></label>
+      <input name="prix_ofr" id="prix_ofr" type="Number" />
+    </div>
+    <div class="inputBox">
+      <label for="photo"> <span>offres photo: </span></label>
+      <input name="photo" id="photo" type="text" />
+    </div>
+
+      
+      <button class="btn">create</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->

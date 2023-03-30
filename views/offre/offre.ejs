@@ -1,0 +1,52 @@
+
+
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<%- include("../partials/header") %>
+
+
+<section class="destination" id="destination">
+
+    <div class="heading m">
+        <span>our offre</span>
+        <h1>make yours offre</h1>
+        <a data-aos="zoom-in-left" data-aos-delay="1300" href="/add-new-offre" class="btn">offre now</a>
+    </div>
+
+    <div class="box-container">
+
+        
+        <% arroffre.forEach(item=> { %>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="600">
+            <div class="image">
+                <img src="/images/des-4.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3><%= item.nom_ofr %></h3>
+                <p><%= item.ville_dep_ofr %>.</p>
+                <a  href="/offre/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
+                
+                
+            </div>
+        </div>
+
+              <% }); %>  
+       
+
+       
+
+    </div>
+
+</section>
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->

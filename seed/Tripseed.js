@@ -1,5 +1,5 @@
 const db = require('../config/database')
-const Trip = require('../models/aTripsSchema')
+const Trip = require('../models/TripsSchema')
 
 
 let newTrip = [

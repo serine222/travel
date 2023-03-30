@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <%- include("../partials/head") %>
+
+  
+
+
+<body>
+   
+<!-- header section starts  -->
+
+<%- include("../partials/header") %>
+
+
+
+<!-- header section ends -->
+
+
+
+<section class="Trips-form" >
+   
+    <div class="heading m">
+      <span>book your transport!</span>
+      <h1>details new transport</h1>
+   </div>
+
+
+
+    
+    <form method="#" action="#" >
+
+      <div class="inputBox">
+      <label for="date_tra"> <span>date_tra </span></label>
+      <p class="form-control">
+        <%= objtransport.date_tra %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="date_rest_tra"> <span>date_rest_tra: </span></label>
+      
+      <p class="form-control">
+        <%= objtransport.date_rest_tra %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="prix_tra"> <span>transport prix_tra: </span></label>
+      <p class="form-control">
+        <%= objtransport.prix_tra %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="mp_tra"> <span>transport mp_tra: </span></label>
+      
+      <p class="form-control">
+        <%= objtransport.cmp_tra %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="typ_tra"> <span>transport typ_tra: </span></label>
+      <p class="form-control">
+        <%= objtransport.typ_tra %>
+    </p>
+    </div>
+    
+    <button data-linkid="transport/<%= objtransport._id %>" class="btn create">
+        Delete this transport
+    </button>
+      
+     
+
+    </form>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+<%- include("../partials/footer.ejs") %>
+
+<script>
+    const btnelement = document.querySelector(".create")
+    const transportId = btnelement.getAttribute("data-linkid");
+
+
+    //  what is data ?
+    // {mylink: "/Trips" }
+
+
+    btnelement.addEventListener("click", (eo) => {
+
+        fetch(`/transport/${transportId}`, { method: "DELETE" })
+            .then((response) => response.json())
+            .then((data) => window.location.href = data.mylink)
+            .catch((err) => {
+                console.log(err);
+            });
+    })
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

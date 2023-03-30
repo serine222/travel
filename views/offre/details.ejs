@@ -1,0 +1,114 @@
+
+
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<%- include("../partials/header") %>
+
+<section class="Trips-form" >
+    <h1>Create new offre</h1>
+
+    <div class="heading m">
+      <span>book your offre!</span>
+      <h1>details new offre</h1>
+   </div>
+
+
+
+    
+    <form method="#" action="#" >
+
+      <div class="inputBox">
+      <label for="nom_ofr"> <span>offres nom_ofr: </span></label>
+      <p class="form-control">
+        <%=objoffre.nom_ofr %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="ville_dep_ofr"> <span>offres ville_dep_ofr: </span></label>
+      
+      <p class="form-control">
+        <%=objoffre.ville_dep_ofr %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="date_dep_ofr"> <span>offres date_dep_ofr: </span></label>
+      <p class="form-control">
+        <%=objoffre.date_dep_ofr %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="dest_ofr"> <span>offres dest_ofr: </span></label>
+      
+      <p class="form-control">
+        <%=objoffre.dest_ofr %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="dure_ofr"> <span>offres dure_ofr: </span></label>
+      <p class="form-control">
+        <%=objoffre.dure_ofr %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="prix_ofr"> <span>offres prix_ofr: </span></label>
+      <p class="form-control">
+        <%=objoffre.prix_ofr %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="photo"> <span>offres photo: </span></label>
+      <p class="form-control">
+        <%=objoffre.photo %>
+    </p>
+    </div>
+
+      
+    <button data-linkid="<%= objoffre._id %>" class="btn create">
+      Delete this offre
+  </button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->
+
+<script>
+  const btnelement = document.querySelector(".create")
+  const transportId = btnelement.getAttribute("data-linkid");
+
+
+  //  what is data ?
+  // {mylink: "/Trips" }
+
+
+  btnelement.addEventListener("click", (eo) => {
+
+      fetch(`/offre/${transportId}`, { method: "DELETE" })
+          .then((response) => response.json())
+          .then((data) => window.location.href = data.mylink)
+          .catch((err) => {
+              console.log(err);
+          });
+  })
+
+
+
+</script>
