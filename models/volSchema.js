@@ -41,6 +41,11 @@ const volSchema = new Schema({
     required: true
 },
 
+user_id : {
+  type: String,
+  required: true
+},
+
 Trips: {
   type: Schema.Types.ObjectId,
   ref: 'Trips'

@@ -7,11 +7,17 @@ const router = express.Router();
 const offreController = require("../controllers/offreController");
 
 
+isAuthenticated = (req,res,next) => {
+    if (req.isAuthenticated()) return next()
+    res.redirect('/users/login')
+}
+
+
 router.get("/",offreController.offre_index_get );
 
 
 
-router.post("/", offreController.offre_post);
+router.post("/",isAuthenticated, offreController.offre_post);
 
 
 
@@ -19,7 +25,7 @@ router.get("/:id", offreController.offre_details_get);
 
 
 
-router.delete("/:id", offreController.offre_delete);
+router.delete("/:id",isAuthenticated, offreController.offre_delete);
 
 
 

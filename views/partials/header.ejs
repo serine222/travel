@@ -3,7 +3,7 @@
 
   <div id="menu-btn" class="fas fa-bars"></div>
 
-  <a data-aos="zoom-in-left" data-aos-delay="150" href="#" class="logo"> <i class="fas fa-paper-plane"></i>Leader </a>
+  <a data-aos="zoom-in-left" data-aos-delay="150" href="#" class="logo"> <i class="fa fa-map-signs" aria-hidden="true"></i>Leader </a>
 
   <nav class="navbar">
       <a data-aos="zoom-in-left" data-aos-delay="300" href="/home">home</a>
@@ -14,8 +14,22 @@
       <a data-aos="zoom-in-left" data-aos-delay="1150" href="/blogs">blogs</a>
 
 
+            <% if (!user) { %>
+             
+                <a data-aos="zoom-in-left" data-aos-delay="1300" href="/users/login"> Login</a>
+              
+
+              
+                  <a data-aos="zoom-in-left" data-aos-delay="1450" href="/users/signup"> Signup</a>
+                
+              <% } else { %>
+              
+                <a  data-aos="zoom-in-left" data-aos-delay="1600"class="nav-link" href="/users/logout"> logout</a>
+              
+              <%}  %>
+         
   </nav>
 
-  <a data-aos="zoom-in-left" data-aos-delay="1300" href="/book" class="btn">book now</a>
+  <a data-aos="zoom-in-left" data-aos-delay="1750" href="/book" class="btn">book now</a>
 
 </header>

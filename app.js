@@ -3,26 +3,71 @@
 const express = require("express");
 const app = express();
 const port = 5000;
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-const db = require('./config/database')
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+const db = require('./config/database');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 app.use(express.urlencoded({ extended: true }));
+
+
 
 const bookRouter = require("./routes/book");
 const TripsRouter = require("./routes/Trips");
 const offreRouter = require("./routes/offre");
+const userRouter = require("./routes/user");
 const transportRouter = require("./routes/transport");
+const passport = require('passport');
+const passportSetup = require('./config/passport-setup');
 
 
+
+// session and flash config .
+app.use(session({
+  secret: 'lorem ipsum',
+  resave: false,
+  saveUninitialized: false,
+  cookie:{_expires : 60000000},
+}));
+
+
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+//store user object 
+
+app.get('*', (req,res,next)=> {
+  res.locals.user = req.user || null
+  next();
+});
+
+isAuthenticated = (req,res,next) => {
+  if (req.isAuthenticated()) return next()
+  res.redirect('/users/login')
+};
+
+function isAdmin(req, res, next) {
+  if (req.user && req.user.role === 'admin') {
+    return  next();
+  } else {
+    req.flash('error', 'You must be an admin to access this page.');
+    res.redirect('/login');
+  }
+}
+
+app.get('/admin', isAuthenticated, isAdmin, function(req, res) {
+  // Code to display admin dashboard goes here
+  res.render("home",{mytitle: "HOME"})
+});
 
 
 
 
 // router
 app.get("/", (req, res) => {
-  res.redirect("/home");
- 
+  res.redirect("/home")
 });
 
 app.get("/home", (req, res) => {
@@ -33,12 +78,6 @@ app.get("/about", (req, res) => {
   res.render("about",{mytitle: "about"})
 });
 
-
-
-app.get("/destination", (req, res) => {
-  res.render("destination",{mytitle: "destination"})
-});
-
 app.get("/services", (req, res) => {
   res.render("services",{mytitle: "services"})
 });
@@ -47,13 +86,9 @@ app.get("/gallery", (req, res) => {
   res.render("gallery",{mytitle: "gallery"})
 });
 
-app.get("/review", (req, res) => {
-  res.render("review",{mytitle: "gallery"})
-});
 
-app.get("/blogs", (req, res) => {
-  res.render("blogs",{mytitle: "blogs"})
-});
+
+
 
 
 
@@ -65,13 +100,13 @@ app.use("/book", bookRouter);
 
 app.use("/Trips", TripsRouter);
 
-app.get("/add-new-Trips", (req, res) => {
+app.get("/add-new-Trips",isAuthenticated, (req, res) => {
   res.render("Trips/add-new-Trips", { mytitle: "create new Trips" });
 });
 
 // all-transport PATH
 app.use("/transport", transportRouter);
-app.get("/add-new-transport", (req, res) => {
+app.get("/add-new-transport",isAuthenticated, (req, res) => {
   res.render("transport/add-new-transport", { mytitle: "create new transport" });
 });
 
@@ -81,6 +116,11 @@ app.use("/offre", offreRouter);
 app.get("/add-new-offre", (req, res) => {
   res.render("offre/add-new-offre", { mytitle: "create new offre" });
 });
+
+app.use("/users", userRouter);
+
+
+
 
 app.listen(3000, ()=> {
 

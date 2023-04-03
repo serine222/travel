@@ -1,0 +1,67 @@
+<%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<%- include("../partials/header") %>
+
+<section class="Profile" id="Profile">
+
+   
+    <div class="heading m-max">
+    <h1>Profile</h1>
+    <h1>
+      
+
+
+
+      </h1>
+    
+      <div class="box-container review">
+      <div class="box-container review " data-aos="fade-left" data-aos-delay="600">
+
+        <div class="box">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ratione.</p>
+            <div class="user">
+                <img src="<%= '/images/' + user.avatar%>" alt="">
+
+                <form action="/users/uploadAvatar" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="avatar" id="avatar">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+                <div class="info">
+                    <h3>john deo</h3>
+                    
+                    <span>designer</span>
+                </div>
+            </div>
+        </div>
+        <div class="content m" data-aos="fade-right" data-aos-delay="300">
+            <span>testimonials</span>
+            <h3><% if (user) { %>
+                welcome .. your email <%= user.email%>
+            <%}%></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda laudantium corporis fugiat quae unde perspiciatis similique ab modi enim consequatur aperiam cumque distinctio facilis sit, debitis possimus asperiores non harum.</p>
+        </div>
+      <br>
+      <br>
+      <br>
+      <br>
+ </div>
+ </div>
+ </div>
+</div>
+    
+        
+        
+              
+
+   
+
+        <%- include('../partials/flashMessages') -%>  
+    </div>
+ 
+ </section>
+
+    
+<%- include("../partials/footer") %>

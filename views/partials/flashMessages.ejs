@@ -1,0 +1,71 @@
+
+<% if (locals.errors) {%>
+        <% errors.forEach((err)=> {%>
+  
+            <div class="alert alert-error">
+              <div class="icon__wrapper">
+                <span class="mdi mdi-alert-outline"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                </span>
+              </div>
+              <p> <%= err.msg%></p>
+             
+              <span class="mdi mdi-close close">x</i>
+              </span>
+            </div>
+  
+            
+        <%})%>
+    <%}%>
+
+
+
+<% if (locals.message && message !="") {%>
+         
+ 
+    <div class="alert alert-success">
+        <div class="icon__wrapper">
+          <span class="mdi mdi-alert-outline"></span>
+        </div>
+        <p> <%= message%></a></p>
+        <span class="mdi mdi-open-in-new open"></span>
+        <span class="mdi mdi-close close"></span>
+      </div>
+
+
+  <%}%>    
+  
+  
+
+
+
+      
+
+  <% if (locals.error && error !="") {%>
+         
+    <div class="alert alert-error">
+        <div class="icon__wrapper">
+          <span class="mdi mdi-alert-outline"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+        </div>
+        <p>   <%= error%></p>
+        <span class="mdi mdi-open-in-new open">x</span>
+       
+        </span>
+      </div>
+  <%}%>     
+      
+
+
+
+  <% if (locals.success && success !="") {%>
+         
+    <div class="alert alert-success">
+        <div class="icon__wrapper">
+          <span class="mdi mdi-alert-outline"></span>
+        </div>
+        <p> <%= success%></p>
+        <span class="mdi mdi-open-in-new open"></span>
+        <span class="mdi mdi-close close"></span>
+      </div>
+  <%}%>   
+
+

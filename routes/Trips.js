@@ -2,24 +2,30 @@ const express = require("express");
 const router = express.Router();
 
 
+isAuthenticated = (req,res,next) => {
+    if (req.isAuthenticated()) return next()
+    res.redirect('/users/login')
+}
+
+
 
 
 const TripsController = require("../controllers/TripsController");
 
 
-router.get("/",TripsController.Trips_index_get );
+router.get("/",isAuthenticated,TripsController.Trips_index_get );
 
 
 
-router.post("/", TripsController.Trips_post);
+router.post("/",isAuthenticated, TripsController.Trips_post);
 
 
 
-router.get("/:id", TripsController.Trips_details_get);
+router.get("/:id",isAuthenticated, TripsController.Trips_details_get);
 
 
 
-router.delete("/:id", TripsController.Trips_delete);
+router.delete("/:id",isAuthenticated, TripsController.Trips_delete);
 
 
 

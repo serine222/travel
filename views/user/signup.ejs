@@ -1,0 +1,41 @@
+<%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+
+
+<section class="signup" id="signup">
+
+  
+     
+        <%- include('../partials/flashMessages') -%>  
+        <form  action="/users/signup" method="post" class="form">
+            <h3>Login Here</h3>
+            <div class="inputBox">
+                <label for="email"><span>Email</span>
+                </label>
+                <input type="text" name="email" id="email" class="form-control">
+            </div>
+            <div class="inputBox">
+                <label for="password"><span>Password</span></label>
+                <input type="password" name="password" id="password" class="form-control">
+            </div>
+
+            <div class="inputBox">
+                <label for="confirm_password"><span>Confirm Password</span></label>
+                <input type="password" name="confirm_password" id="confirm_password" class="form-control">
+            </div>
+
+
+                <div class="inputBox">
+                    <button type="submit" class="btn btn-primary"> Signup</button>
+                </div>
+        </form>
+        
+    </div>
+ 
+ </section>
+
+    
+<%- include("../partials/footer-script.ejs") %>
