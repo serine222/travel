@@ -11,13 +11,21 @@ const flash = require('connect-flash');
 
 app.use(express.urlencoded({ extended: true }));
 
+// Router admin
+const adminbookRouter = require("./routes/admin/book");
+const adminTripsRouter = require("./routes/admin/Trips");
+const adminoffreRouter = require("./routes/admin/offre");
+const admintransportRouter = require("./routes/admin/transport");
+
+// Router user
+
+const userbookRouter = require("./routes/user/book");
+const userTripsRouter = require("./routes/user/Trips");
+const useroffreRouter = require("./routes/user/offre");
+const usertransportRouter = require("./routes/user/transport");
 
 
-const bookRouter = require("./routes/book");
-const TripsRouter = require("./routes/Trips");
-const offreRouter = require("./routes/offre");
 const userRouter = require("./routes/user");
-const transportRouter = require("./routes/transport");
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
 
@@ -53,7 +61,7 @@ function isAdmin(req, res, next) {
     return  next();
   } else {
     req.flash('error', 'You must be an admin to access this page.');
-    res.redirect('/login');
+    res.redirect('/users/login');
   }
 }
 
@@ -64,8 +72,8 @@ app.get('/admin', isAuthenticated, isAdmin, function(req, res) {
 
 
 
-
 // router
+
 app.get("/", (req, res) => {
   res.redirect("/home")
 });
@@ -74,7 +82,7 @@ app.get("/home", (req, res) => {
   res.render("home",{mytitle: "HOME"})
 });
 
-app.get("/about", (req, res) => {
+app.get("/about",isAdmin, (req, res) => {
   res.render("about",{mytitle: "about"})
 });
 
@@ -86,38 +94,54 @@ app.get("/gallery", (req, res) => {
   res.render("gallery",{mytitle: "gallery"})
 });
 
+app.use("/users", userRouter);
+
+// ----------------------------------Router admin------------------------------------------------------
+
+// booking PATH
+
+app.use("admin/book", adminbookRouter);
+
+// all-Trips PATH
+
+app.use("admin/Trips", adminTripsRouter);
 
 
+
+// all-transport PATH
+app.use("/admin/transport", admintransportRouter);
+
+
+// all-offre PATH
+app.use("/admin/offre", adminoffreRouter);
+app.get("/add-new-offre", (req, res) => {
+  res.render("offre/add-new-offre", { mytitle: "create new offre" });
+});
+
+//------------------------------------- Router user-------------------------------------------------------
 
 
 
 
 // booking PATH
 
-app.use("/book", bookRouter);
-
+app.use("/book", userbookRouter);
 // all-Trips PATH
-
-app.use("/Trips", TripsRouter);
+app.use("/Trips", userTripsRouter);
 
 app.get("/add-new-Trips",isAuthenticated, (req, res) => {
   res.render("Trips/add-new-Trips", { mytitle: "create new Trips" });
 });
 
 // all-transport PATH
-app.use("/transport", transportRouter);
-app.get("/add-new-transport",isAuthenticated, (req, res) => {
-  res.render("transport/add-new-transport", { mytitle: "create new transport" });
-});
-
-
+app.use("/transport", usertransportRouter);
 // all-offre PATH
-app.use("/offre", offreRouter);
-app.get("/add-new-offre", (req, res) => {
-  res.render("offre/add-new-offre", { mytitle: "create new offre" });
-});
+app.use("/offre", useroffreRouter);
 
-app.use("/users", userRouter);
+
+
+
+
 
 
 

@@ -1105,6 +1105,51 @@ section {
 
 
 
+  .transport table {
+    border-spacing: 0;
+    border-collapse:separate;
+    border-radius: 5rem;
+    text-align: right;
+    direction: rtl;
+    width: 80%;
+    /* max-width: 800px; */
+    margin: 0 auto;
+    line-height: 44px;
+    color: #b4b4b4;
+  }
+  
+  .transport  tbody td {
+    text-align: center;
+    color: #b4b4b4;
+    font-size: 14px;
+    /* border: 0.2rem solid #29d9d5; */
+    border: 1px solid #b4b4b4;
+  
+  
+  }
+  
+  .transport  thead th {
+    text-align: center;
+    font-size: 14px;
+    background: #29d9d5;
+    color: #111;
+    /* border: 0.2rem solid #b4b4b4; */
+    /* border-radius: 5rem 5rem 0rem 5rem; */
+    line-height: 60px;
+  }
+  .transport  thead th:nth-child(1) {
+    border-radius: 0rem 2rem 0rem 0rem;
+  }
+  .transport  thead th:nth-child(4) {
+    border-radius: 2rem 0rem 0rem 0rem;
+  }
+  .transport  thead th:hover {
+    background: #29d9d5;
+    color: #111;
+  }
+
+
+
 
 
 

@@ -59,7 +59,14 @@
     <div class="inputBox">
       <label for="typ_tra"> <span>transport typ_tra: </span></label>
       <p class="form-control">
-        <%= objtransport.typ_tra %>
+
+        <% arrtyp_tra.forEach(item=> { %>
+        <% if ( item._id === objtransport.typ_tra) { %>
+          <td>
+             <%= item.name %>
+         </td>
+         <% } %>
+         <% }); %>  
     </p>
     </div>
     

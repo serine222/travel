@@ -1,80 +1,44 @@
 // const users = require("../models/usersSchema");
+const User = require("../models/UserSchema");
 
 
-// article_create_get
+const users_login = (req, res) => {
+  res.render('user/login', { mytitle: "login",error: req.flash('error')});
+}
+const users_signup = (req, res) => {
 
-const login_get = (req, res) => {
-  
-  res.render('user/login', { mytitle: "login"});
+  res.render('user/signup', { mytitle: "signup",error: req.flash('error')});
+};
+const users_profile = (req, res) => {
+    
+  res.render('user/profile', {mytitle: "profile",
+  success: req.flash('success')
+});
+};
+const users_logout = (req, res) => {
+    
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/users/login');
+});
 
 };
-
-
-// const users_index_get = (req, res) => {
-
-//   users.find()
-//     .then((result) => {
-//       res.render("users/users", { mytitle: "users", arrusers: result });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
-// const users_post = (req, res) => {
- 
-
-
-//     let users = new users({
-//       title: req.body.title,
-//       summary: req.body.summary,
-//       bodyl: req.body.body,
-//       created_at: Date.now()
-//   })
-
-//     // console.log(req.body)
-  
-//     users
-//       .save()
-//       .then((result) => {
-//         res.redirect("/users");
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-// };
-
-// const users_details_get = (req, res) => {
-   
-//  // result =   object  inside mongo database
-
-//  users.findById(req.params.id)
-//  .then((result) => {
-//    res.render("users/details", { mytitle: "users DETAILS", objusers: result });
-//  })
-//  .catch((err) => {
-//    console.log(err);
-//  });
-
-// };
-
-// const users_delete = (req, res) => {
+const users_delete = (req, res) => {
     
-//     users.findByIdAndDelete(req.params.id)
+  User.findByIdAndDelete(req.params.id)
 
-//     .then((params) => {
-//       res.json({ mylink: "/users" });
-//     })
+    .then((params) => {
+      res.json({ mylink: "/users" });
+    })
 
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
+    .catch((err) => {
+      console.log(err);
+    });
+};
 module.exports = {
-    // users_index_get,
-    // users_post,
-    // users_details_get,
-    // users_delete,
-    login_get,
+    users_logout,
+    users_profile,
+    users_signup,
+    users_login
+   
 };

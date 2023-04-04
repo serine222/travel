@@ -9,11 +9,13 @@ isAuthenticated = (req,res,next) => {
 
 
 
+router.get("/", (req, res) => {
+    res.redirect("/add-new-Trips")
+  });
 
-const TripsController = require("../controllers/TripsController");
+const TripsController = require("../../controllers/TripsController");
 
 
-router.get("/",isAuthenticated,TripsController.Trips_index_get );
 
 
 
@@ -25,7 +27,7 @@ router.get("/:id",isAuthenticated, TripsController.Trips_details_get);
 
 
 
-router.delete("/:id",isAuthenticated, TripsController.Trips_delete);
+
 
 
 

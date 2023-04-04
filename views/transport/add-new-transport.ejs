@@ -46,6 +46,7 @@
       <select class="custom-select mr-sm-2" name="typ_tra">
           <option selected disabled> type</option>
           <% arrtyp_tra.forEach(item=> { %>
+            
       <option value='<%= item._id %>'>  <%= item.name %> </option>
       
       <% }); %>  

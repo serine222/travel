@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
   const typ_traSchema = new Schema(  {
 
-    name: {
+ name: {
       type: String,
       required: true
   },

@@ -1,6 +1,4 @@
 
-
-
    <%- include("../partials/head") %> 
 
    
@@ -9,7 +7,7 @@
 <%- include("../partials/header") %>
 
 
-<section class="book-form" >
+
    
 
     <div class="heading m">
@@ -23,90 +21,60 @@
  
  
  
-       <div class="table-responsive custom-table-responsive">
-         
-        <table class="table custom-table">
+       
+   <section data-aos="zoom-in-left" data-aos-delay="2050" class="transport" >  
+        <table >
             <thead>
               <tr>  
   
-                
-               
-              
-               <th scope="col">name </th>
-               <th scope="col">date_tra</th>
-               <th scope="col">date_rest_tra</th>
-               <th scope="col">transport prix_tra</th>
-              
-               <th scope="col">Processes </th>
-
+               <!-- <th >name </th> --><th >Processes </th>
+               <th >transport prix_tra</th>
+               <!-- <th >Processes </th> -->
+               <th >name </th>
  
              </tr>
            </thead>
-           <tbody>
-            <% arrtransport.forEach(item=> { %>
-             <tr scope="row">
-               
-               
-                
 
-                
-              
-                <td>
-                    <%= item.typ_tra %>
-                </td>
-                
-                <td>
-                   <%= item.date_tra %>
+         
+           <tbody>
+
                  
-                </td>
-                
-                <td>
-                   <%= item.date_rest_tra %>
-                   
-                </td>
-                
-                <td>
-                   <%= item.prix_tra %>
-                  
-                </td>
-                
-                
-                <!-- <td>
-                   <%= item.mp_tra %>
-                </td>
-                
-                
-                <td>
-                   <%= item.typ_tra %>
-                </td> -->
-                
+            <% arrtransport.forEach(item=> { %>
                
-                
-                <td>
+
+             <tr >
+               <td>
                     <a  href="/transport/transport/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
                 </td>
+               <% arrtyp_tra.forEach(itemm=> { %>
+               <% if ( item.typ_tra === itemm._id) { %>
+               <td>
+                  <%= itemm.name %>
+              </td>
+              <% } %>
+              <% }); %>  
+                <td>
+                   <%= item.prix_tra %>
+                </td>
+                
  
               
-               <tr class="spacer"><td colspan="100"></td></tr>
- 
+              
+              
               </tr>
+
+
               <% }); %>  
  
  
             </tbody>
         </table>
-      </div>
+      </section>
+   </div>
+   </div>
+      
 
 
-    </div>
-
-  </div>
-    
-    
-
-   
-
-</section>
 
 
 <!-- footer section starts  -->
