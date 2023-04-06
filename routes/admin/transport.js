@@ -24,7 +24,7 @@ const transportController = require("../../controllers/transportController");
 
 
 
-router.get("/add-new-transport",isAuthenticated,transportController.transport_add);
+router.get("/add-new-transport",isAuthenticated,isAdmin,transportController.transport_add);
 
 
 

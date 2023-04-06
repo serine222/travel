@@ -22,7 +22,7 @@ function isAdmin(req, res, next) {
 
 
 
-router.get("/all-Book",isAuthenticated,isAdmin, BookController.Book_all_get);
+router.get("/all-Book",isAuthenticated, BookController.Book_all_get);
 
 
 

@@ -23,7 +23,6 @@ const Book_index_get = (req, res) => {
 
 const Book_all_get = (req, res) => {
     
-    
 
     Vol.find()
     .then((result) => {

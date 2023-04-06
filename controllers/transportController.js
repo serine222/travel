@@ -10,8 +10,8 @@ const transport_index_get = (req, res) => {
     let arrtyp_tra = result;
     transport.find()
     .then((result) => {
-      // res.render("transport/transport", { mytitle: "transport", arrtransport: result,arrtyp_tra });
-      console.log("arrtransport: result");
+      res.render("transport/transport", { mytitle: "transport", arrtransport: result,arrtyp_tra });
+      // console.log("arrtransport: result");
     })
     .catch((err) => {
       console.log(err);

@@ -4,10 +4,22 @@
 <body>
    
 <!-- header section starts  -->
+<% if (user.role === 'admin') { %>
+    <%- include("./partials/header_admin.ejs") %>
+    <%- include("./partials/sidebar.ejs") %>
 
+ 
+  <% } else { %>
+              
 <%- include("./partials/header") %>
+  
+  <%}  %>
 
 <!-- header section ends -->
+
+
+
+
 
 <!-- home section starts  -->
 
@@ -78,8 +90,9 @@
 <%- include("./partials/footer") %>
 
 <!-- footer section ends -->
+ 
 
-
+ 
 
 
 

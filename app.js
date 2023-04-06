@@ -65,7 +65,7 @@ function isAdmin(req, res, next) {
   }
 }
 
-app.get('/admin', isAuthenticated, isAdmin, function(req, res) {
+app.get('/admin/home', isAuthenticated, isAdmin, function(req, res) {
   // Code to display admin dashboard goes here
   res.render("home",{mytitle: "HOME"})
 });
@@ -98,24 +98,24 @@ app.use("/users", userRouter);
 
 // ----------------------------------Router admin------------------------------------------------------
 
+
 // booking PATH
-
-app.use("admin/book", adminbookRouter);
-
+app.use("/admin/book", adminbookRouter);
 // all-Trips PATH
-
-app.use("admin/Trips", adminTripsRouter);
-
-
-
+app.use("/admin/Trips", adminTripsRouter);
 // all-transport PATH
 app.use("/admin/transport", admintransportRouter);
 
-
+// app.get("/admin/add-new-transport",isAuthenticated,isAdmin, (req, res) => {
+//   res.render("Trips/add-new-transport", { mytitle: "create new transport" });
+// });
 // all-offre PATH
 app.use("/admin/offre", adminoffreRouter);
-app.get("/add-new-offre", (req, res) => {
-  res.render("offre/add-new-offre", { mytitle: "create new offre" });
+
+
+
+app.get("/admin/add-new-offre", (req, res) => {
+  res.render("offre/add-new-offre",{mytitle: "create new offre"})
 });
 
 //------------------------------------- Router user-------------------------------------------------------
