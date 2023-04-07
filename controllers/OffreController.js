@@ -72,9 +72,21 @@ const offre_delete = (req, res) => {
     });
 };
 
+const git_allOffre = (req, res) => {
+    
+  offre.find()
+  .then((result) => {
+    res.json(arroffre=result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+};
+
 module.exports = {
     offre_index_get,
     offre_post,
     offre_details_get,
     offre_delete,
+    git_allOffre
 };

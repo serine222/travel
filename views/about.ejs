@@ -10,15 +10,23 @@
    
 <!-- header section starts  -->
 
-<!-- header section starts  -->
-<% if (user.role === 'admin') { %>
-    <%- include("./partials/header_admin.ejs") %>
-    <%- include("./partials/sidebar.ejs") %>
+<% if (!user) { %>
 
- 
+
+  <%- include("./partials/header") %>
+  
   <% } else { %>
               
-<%- include("./partials/header") %>
+  
+    <% if (user.role === 'admin') { %>
+      <%- include("./partials/header_admin.ejs") %>
+      <%- include("./partials/sidebar.ejs") %>
+    <% } else { %>
+      <%- include("./partials/header") %>
+    
+    <%}  %>
+    
+    
   
   <%}  %>
 

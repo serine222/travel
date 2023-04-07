@@ -31,7 +31,9 @@
   margin-top: 10rem;
 
 }
-
+.hid{
+  display:none;
+}
 
 html {
   font-size: 62.5%;
@@ -199,7 +201,6 @@ section {
 .book-form {
   width: 80%;
   margin: 1rem auto;
-  
   background: #222;
   border-radius: 1rem;
   -webkit-box-shadow: 0 0.5rem 1rem rgba(17, 17, 17, 0.3);
@@ -210,6 +211,53 @@ section {
 .book-home{
   margin-top: -5rem;
 }
+
+.book-home .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.book-home .inputBox {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25rem;
+          flex: 1 1 25rem;
+}
+
+.book-home  .inputBox span {
+  font-size: 1.4rem;
+  color: #aaa;
+}
+
+.book-home  .inputBox input {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border-radius: 5rem;
+  border: 0.2rem solid #29d9d5;
+  font-size: 1.6rem;
+  color: #aaa;
+  text-transform: none;
+  background: none;
+  margin-top: 1rem;
+}
+.book-home .inputBox select {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border-radius: 5rem;
+  border: 0.2rem solid #29d9d5;
+  font-size: 1.6rem;
+  color: #aaa;
+  text-transform: none;
+  background: none;
+  margin-top: 1rem;
+}
+
 
 .content-g {
   display: -webkit-box;
@@ -229,39 +277,6 @@ section {
           flex: 1 1 42rem;
 }
 
-/* .login , .signup {
- display: block;
-}
-
-.login .inputBox , .signup .inputBox{
-  display: flex;
-  justify-content: center
-}
-
-.login .inputBox span , .signup .inputBox span{
-  font-size: 1.4rem;
-  color: #aaa;
-}
-
-.login .inputBox input , .signup .inputBox input{
-  width: 60%;
-  padding: 1.2rem 1.4rem;
-  border-radius: 5rem;
-  border: 0.2rem solid #29d9d5;
-  font-size: 1.6rem;
-  color: #aaa;
-  text-transform: none;
-  background: none;
-  margin-top: 1rem;
-
-}
-
-
-.login .btn  ,.signup .btn{
- width: 200px;
- height: 60px;
- padding: 4px;
-} */
 .signup form{
   height: 600px;
 }
@@ -1275,7 +1290,7 @@ section {
   border-spacing:0;
   color:#999;
    font-family: arial;
-  font-size: 14px;
+  font-size: 20px;
   text-decoration:none;
   -webkit-transition:all .1s linear;
   transition:all .1s linear;
@@ -1289,7 +1304,7 @@ section {
   height:36px;
   text-align:center;
   vertical-align:middle;
-  font-size:18px;
+  font-size:25px;
   }
   
 .main-menu .nav-text {
@@ -1297,7 +1312,7 @@ section {
   display:table-cell;
   vertical-align:middle;
   width:190px;
-    font-family: 'Titillium Web', sans-serif;
+    
   }
   
    .main-menu>ul.logout {
@@ -1317,6 +1332,7 @@ section {
   
   .main-menu  a:hover,a:focus {
   text-decoration:none;
+  color: #00B4FF;
   }
   
   
@@ -1337,4 +1353,104 @@ section {
   height: 100%;
   }
 
+
+
+
+
+
+
+
+  /* ------------------------------------------------------------------------------------------ */
+
+  .upload{
+    width: 100px;
+    position: relative;
+    margin: auto;
+   
+  }
   
+  .upload img{
+    border-radius: 50%;
+    border: 6px solid #eaeaea;
+    height: 200px;
+    width: 200px;
+  }
+  
+  .upload .round{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #00B4FF;
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .upload .round input[type = "file"]{
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+  }
+  
+  input[type=file]::-webkit-file-upload-button{
+      cursor: pointer;
+  }
+
+
+
+.display{
+  display: inline-block;
+  width: 40%;
+  margin: 10px;
+}
+
+
+
+
+
+
+  .profile {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    
+    width: 60%;
+    margin: auto;
+
+
+    
+   
+    /* width: 100%; */
+  }
+  
+  .profile img {
+    /* width: 100%; */
+    border-radius: 50%;
+    margin-bottom: -40px;
+    margin: auto;
+
+  }
+  
+  .profile h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .profile p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .profile ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .profile li {
+    margin-bottom: 5px;
+  }

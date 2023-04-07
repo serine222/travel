@@ -5,6 +5,8 @@ const app = express();
 const port = 5000;
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(express.static('uploads'))
+
 const db = require('./config/database');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -28,6 +30,7 @@ const usertransportRouter = require("./routes/user/transport");
 const userRouter = require("./routes/user");
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
+
 
 
 
@@ -79,7 +82,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  res.render("home",{mytitle: "HOME"})
+  res.render("home-user",{mytitle: "HOME"})
+});
+
+app.get("/filter", (req, res) => {
+  res.render("filter",{mytitle: "filter"})
 });
 
 app.get("/about",isAdmin, (req, res) => {
@@ -119,7 +126,6 @@ app.get("/admin/add-new-offre", (req, res) => {
 });
 
 //------------------------------------- Router user-------------------------------------------------------
-
 
 
 

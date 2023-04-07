@@ -40,6 +40,32 @@ passport.authenticate('local.login', {
   }) 
     );
 
+    const multer = require("multer")
+// configure multer 
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/images')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + '.png') 
+    }
+  });
+  var upload = multer({ storage: storage });
+
+  router.post('/uploadAvatar', upload.single('avatar'), (req,res)=> {
+
+    let newFields = {
+        avatar: req.file.filename
+    }
+    User.updateOne( {_id: req.user._id}, newFields, (err)=> {
+        if (!err) {
+            res.redirect('/users/profile')
+        }
+
+    } )
+})
+
+
 
 // sign up form 
 router.get('/signup',usersController.users_signup);

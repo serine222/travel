@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   <%- include("./partials/head") %> 
+<body>
+   
+<!-- header section starts  -->
+
+              
+<%- include("./partials/header") %>
+  
+
+
+<!-- header section ends -->
+
+
+
+
+<!-- 
+<input type="text" id="ville_dep_ofr-input" placeholder="Where do you want to go?">
+<input type="date" id="departure-date-input" placeholder="When do you want to depart?">
+<input type="number" id="prix_ofr-input" placeholder="How many prix_ofr?">
+<button onclick="filteroffres()">Filter</button> -->
+
+
+
+
+<section class="home" id="home">
+
+    <div class="content">
+        <span data-aos="fade-up" data-aos-delay="150">specialty tourism</span>
+        <h3 data-aos="fade-up" data-aos-delay="300">Leader</h3>
+        <p data-aos="fade-up" data-aos-delay="450">At our travel agency, we believe that travel is not just a luxury, but a necessity for a happy and fulfilled life. We are passionate about creating unforgettable travel experiences that will leave you feeling rejuvenated, inspired, and transformed.</p>
+        <!-- <a data-aos="fade-up" data-aos-delay="600" href="book" class="btn">book now</a> -->
+    </div>
+ 
+ </section>
+
+
+<!-- <section class="book-form book-home" id="book-home ">
+
+    
+        <from>
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+            <span>where to?</span>
+            <input placeholder="place name" value=""type="text" id="ville_dep_ofr-input" >
+
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300"id="departure-date-input" class="inputBox">
+            <span>when?</span>
+            <input type="date" value="">
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+            <span>how many?</span>
+            <input type="number" placeholder="number of prix_ofr" id="prix_ofr-input"value="">
+        </div>
+
+
+        <button onclick="filteroffres()">Filter</button> 
+
+    </from>
+    
+
+    <ul id="offre-list">
+        List of offres will be dynamically populated here
+      </ul>
+ </section> -->
+
+ <section class=" book-home" id="book-home ">
+
+    <div class="form">
+
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+            <span>where to?</span>
+
+
+            <input type="text" placeholder="place name" id="ville_dep_ofr-input" value="">
+
+
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300"  class="inputBox">
+            <span>when?</span>
+
+            <input type="date" id="departure-date-input" value="">
+
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+            <span>how many?</span>
+
+            <input type="number" placeholder="number of travelers" value="" id="prix_ofr-input">
+
+        </div>
+
+        <button onclick="filteroffres()"data-aos="zoom-in" data-aos-delay="600" class="btn">find now</button> 
+  
+   
+
+    </div>
+    </section>
+   
+    <section class="destination" id="destination">
+
+        
+    <div id="offre-list">
+        <div class="box-container " id="offre-list">
+            
+    </div>
+</div>
+    
+    </section>
+    
+           
+    
+        </div>
+    
+    </section>
+    
+ <div class="banner">
+
+    <div class="content " data-aos="zoom-in-up" data-aos-delay="300">
+        <span>start your adventures</span>
+        <h3>Let's Explore This World</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptatum praesentium amet quibusdam quam officia suscipit odio.</p>
+        <a href="book" class="btn">book now</a>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- footer section starts  -->
+
+<%- include("./partials/footer") %>
+
+<!-- footer section ends -->
+ 
+
+
+
+
+
+
+
+<script>
+function filteroffres() {
+    const nom_ofr = document.getElementById('ville_dep_ofr-input').value;
+    const date_dep_ofr = document.getElementById('departure-date-input').value;
+    const prix_ofr = document.getElementById('prix_ofr-input').value;
+  
+    // Send an AJAX request to the server to fetch the list of offres
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        const arroffre = JSON.parse(this.responseText);
+        
+        // Filter the list of offres based on user input
+        const filteredoffres = arroffre.filter(offre => {
+          if (nom_ofr && nom_ofr.toLowerCase() !== offre.nom_ofr.toLowerCase()) {
+            return false;
+          }
+          if (date_dep_ofr && date_dep_ofr > offre.date_dep_ofr) {
+            return false;
+          }
+          if (prix_ofr && prix_ofr> offre.prix_ofr) {
+            return false;
+          }
+          return true;
+        });
+  
+        // Dynamically populate the list of filtered offres
+        const offreList = document.getElementsByClassName("box-container");
+        offreList.innerHTML ='<span>start your adventures</span>';
+        
+
+        filteredoffres.forEach(offre => {
+
+          const box = document.createElement('div');
+          box.classList.add('box');
+        offreList[0].appendChild(box);
+        
+        // const tripItem = document.createElement('li');
+        // tripItem.innerHTML = `<b>${offre.nom_ofr}</b> (${offre.nom_ofrn} days, $${offre.nom_ofr} per traveler)`;
+        // offreList[0].appendChild(tripItem);
+
+
+          
+          const image = document.createElement('div');
+          image.classList.add('image');
+          box.appendChild(image);
+       
+
+          const img = document.createElement('img');
+          img.src="/images/des-4.jpg";
+          image.appendChild(img);
+
+          const content = document.createElement('div');
+          content.classList.add('content');
+          box.appendChild(content);
+
+          const h3 = document.createElement('h3');
+          content.appendChild( h3);
+          h3.innerHTML = `${offre.nom_ofr}`;
+
+          const p = document.createElement('p');
+          content.appendChild( p);
+          p.innerHTML = `${offre.ville_dep_ofr}`;
+
+          const a = document.createElement('a');
+          content.appendChild( a);
+          a.innerHTML = `read more`;
+
+          a.href=`/offre/${offre._id}`;
+
+        
+        
+          
+ 
+        });
+
+
+      }
+    };
+    xhr.open('GET', '/offre/all-offre', true);
+    xhr.send();
+  }
+  </script>
+
+  

@@ -14,9 +14,15 @@ const userSchema = new mongoose.Schema({
     //     type: String,
     //     required: true
     // },
-    role: { type: String, default: 'user' }
+    role: { type: String, default: 'user' },
+
+    avatar: {
+        type: String,
+        required: true
+    }
 
 });
+
 
 userSchema.methods.hashPassword = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10))

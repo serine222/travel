@@ -5,16 +5,23 @@
 
    
 <!-- header section starts  -->
+<% if (!user) { %>
 
-<!-- header section starts  -->
-<% if (user.role === 'admin') { %>
-  <%- include("../partials/header_admin.ejs") %>
-  <%- include("../partials/sidebar.ejs") %>
 
+<%- include("../partials/header") %>
 
 <% } else { %>
             
-<%- include("../partials/header") %>
+
+  <% if (user.role === 'admin') { %>
+    <%- include("../partials/header_admin.ejs") %>
+    <%- include("../partials/sidebar.ejs") %>
+  <% } else { %>
+    <%- include("../partials/header") %>
+  
+  <%}  %>
+  
+  
 
 <%}  %>
 
