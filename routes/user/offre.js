@@ -4,7 +4,7 @@ const router = express.Router();
 
 // const offre = require("../models/aoffreSchema");
 
-const offreController = require("../../controllers/offreController");
+const offreController = require("../../controllers/OffreController");
 
 
 isAuthenticated = (req,res,next) => {

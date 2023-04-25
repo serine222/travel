@@ -1,17 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-
-// const offre = require("../models/aoffreSchema");
-
-const offreController = require("../../controllers/OffreController");
-
-
 isAuthenticated = (req,res,next) => {
     if (req.isAuthenticated()) return next()
     res.redirect('/users/login')
 }
-
 
 function isAdmin(req, res, next) {
     if (req.user && req.user.role === 'admin') {
@@ -21,12 +14,25 @@ function isAdmin(req, res, next) {
       res.redirect('/login');
     }
   }
+  
+  
+
+
+// const BookTranspor = require("../models/aBookTransporSchema");
+
+const BookTransporController = require("../../controllers/BookTransportController");
+
+
+
+router.get("/add-new-BookTranspor",isAuthenticated,isAdmin,BookTransporController.BookTranspor_add);
 
 
 
 
-router.post("/",isAuthenticated,isAdmin, offreController.offre_post);
-router.delete("/:id",isAuthenticated,isAdmin, offreController.offre_delete);
+
+router.delete("/BookTranspor/:id",isAuthenticated,isAdmin, BookTransporController.BookTranspor_delete);
+
+
 
 
 

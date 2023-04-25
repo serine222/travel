@@ -18,6 +18,8 @@ const adminbookRouter = require("./routes/admin/book");
 const adminTripsRouter = require("./routes/admin/Trips");
 const adminoffreRouter = require("./routes/admin/offre");
 const admintransportRouter = require("./routes/admin/transport");
+const adminBookTransporRouter = require("./routes/admin/BookTransport");
+
 
 // Router user
 
@@ -25,8 +27,11 @@ const userbookRouter = require("./routes/user/book");
 const userTripsRouter = require("./routes/user/Trips");
 const useroffreRouter = require("./routes/user/offre");
 const usertransportRouter = require("./routes/user/transport");
+const userBookTransporRouter = require("./routes/user/BookTransport");
 
 
+
+const homeRouter = require("./routes/user/home");
 const userRouter = require("./routes/user");
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
@@ -39,7 +44,8 @@ app.use(session({
   secret: 'lorem ipsum',
   resave: false,
   saveUninitialized: false,
-  cookie:{_expires : 60000000},
+  cookie:{_expires : 60000000*600},
+  cookie:{maxAge : 60000000*600},
 }));
 
 
@@ -81,13 +87,10 @@ app.get("/", (req, res) => {
   res.redirect("/home")
 });
 
-app.get("/home", (req, res) => {
-  res.render("home-user",{mytitle: "HOME"})
-});
+app.use("/home",  homeRouter);
 
-app.get("/filter", (req, res) => {
-  res.render("filter",{mytitle: "filter"})
-});
+
+
 
 app.get("/about",isAdmin, (req, res) => {
   res.render("about",{mytitle: "about"})
@@ -112,6 +115,8 @@ app.use("/admin/book", adminbookRouter);
 app.use("/admin/Trips", adminTripsRouter);
 // all-transport PATH
 app.use("/admin/transport", admintransportRouter);
+app.use("/admin/BookTranspor", adminBookTransporRouter);
+
 
 // app.get("/admin/add-new-transport",isAuthenticated,isAdmin, (req, res) => {
 //   res.render("Trips/add-new-transport", { mytitle: "create new transport" });
@@ -121,7 +126,7 @@ app.use("/admin/offre", adminoffreRouter);
 
 
 
-app.get("/admin/add-new-offre", (req, res) => {
+app.get("/admin/add-new-offre",isAdmin, (req, res) => {
   res.render("offre/add-new-offre",{mytitle: "create new offre"})
 });
 
@@ -141,6 +146,8 @@ app.get("/add-new-Trips",isAuthenticated, (req, res) => {
 
 // all-transport PATH
 app.use("/transport", usertransportRouter);
+app.use("/BookTransport", userBookTransporRouter);
+
 // all-offre PATH
 app.use("/offre", useroffreRouter);
 

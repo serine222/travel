@@ -29,17 +29,7 @@
 
 
 <section class="Trips-form" >
-  <a data-aos="zoom-in-left" data-aos-delay="1300" href="/transport/add-new-transport" class="btn">book now</a>
-
-
-
-
-
-
-
-
-
-
+   
     <div class="heading m">
       <span>book your transport!</span>
       <h1>details new transport</h1>
@@ -51,37 +41,31 @@
     <form method="#" action="#" >
 
       <div class="inputBox">
-      <label for="date_tra"> <span>The start date </span></label>
+      <label for="name"> <span>name </span></label>
       <p class="form-control">
-        <%= objtransport.date_tra %>
+        <%= objtransport.name %>
     </p>
     </div>
     <div class="inputBox">
-      <label for="date_rest_tra"> <span>The date of return </span></label>
+      <label for="email"> <span>The date of return </span></label>
       
       <p class="form-control">
-        <%= objtransport.date_rest_tra %>
+        <%= objtransport.email %>
     </p>
     </div>
     <div class="inputBox">
-      <label for="prix_tra"> <span>transport prix </span></label>
+      <label for="Num_tel"> <span>transport prix </span></label>
       <p class="form-control">
-        <%= objtransport.prix_tra %>
+        <%= objtransport.Num_tel %>
     </p>
     </div>
+    
     <div class="inputBox">
-      <label for="mp_tra"> <span>company transport </span></label>
-      
-      <p class="form-control">
-        <%= objtransport.cmp_tra %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="typ_tra"> <span>type </span></label>
+      <label for="transport"> <span>type </span></label>
       <p class="form-control">
 
-        <% arrtyp_tra.forEach(item=> { %>
-        <% if ( item._id === objtransport.typ_tra) { %>
+        <% arrtransport.forEach(item=> { %>
+        <% if ( item._id === objtransport.transport) { %>
           <td>
              <%= item.name %>
          </td>
@@ -91,7 +75,7 @@
     </div>
     
     <button data-linkid="transport/<%= objtransport._id %>" class="btn create">
-        Delete this transport
+        Delete this book transport
     </button>
       
      

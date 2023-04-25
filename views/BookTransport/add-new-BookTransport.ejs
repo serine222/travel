@@ -23,39 +23,36 @@
 
     <div class="heading m">
       <span> transport!</span>
-      <h1>Create new transport</h1>
+      <h1>Book transport</h1>
    </div>
 
 
 
     
-    <form method="POST" action="/admin/transport" >
+    <form method="POST" action="/BookTransport" >
 
     
       <div class="inputBox">
-      <label for="date_tra"> <span>The start date</span></label>
-        <input name="date_tra" id="date_tra" type="text" />
+      <label for="name"> <span>name</span></label>
+        <input name="name" id="name" type="text" />
     </div>
     <div class="inputBox">
-      <label for="date_rest_tra"> <span>The date of return  </span></label>
-      <input name="date_rest_tra" id="date_rest_tra" type="date" />
+      <label for="email"> <span>email  </span></label>
+      <input name="email" id="email" type="date" />
     </div>
     <div class="inputBox">
-      <label for="prix_tra"> <span>transport prix </span></label>
-    <input name="prix_tra" id="prix_tra" type="number" />
+      <label for="Num_tel"> <span>phone number </span></label>
+    <input name="Num_tel" id="Num_tel" type="number" />
     </div>
-    <div class="inputBox">
-      <label for="cmp_tra"> <span>company transport</span></label>
-    <input name="cmp_tra" id="cmp_tra" type="date" />
-    </div>
+    
    
     <div class="inputBox">
             
-      <label for="typ_tra"> <span> type </span></label>
+      <label for="transport"> <span> transport</span></label>
 
-      <select class="custom-select mr-sm-2" name="typ_tra">
+      <select class="custom-select mr-sm-2" name="transport">
           <option selected disabled> type</option>
-          <% arrtyp_tra.forEach(item=> { %>
+          <% arrtransport.forEach(item=> { %>
             
       <option value='<%= item._id %>'>  <%= item.name %> </option>
       

@@ -83,10 +83,25 @@ const git_allOffre = (req, res) => {
   });
 };
 
+const git_Offre = (req, res) => {
+    
+
+  
+  offre.find()
+    .then((result) => {
+      res.render("home-user", { mytitle: "home", arroffre: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
 module.exports = {
     offre_index_get,
     offre_post,
     offre_details_get,
     offre_delete,
+    git_Offre,
     git_allOffre
 };

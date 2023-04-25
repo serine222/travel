@@ -8,25 +8,35 @@
   <nav class="navbar">
       <a data-aos="zoom-in-left" data-aos-delay="300" href="/home">home</a>
       <!-- <a data-aos="zoom-in-left" data-aos-delay="450" href="/about">about</a> -->
-      <a data-aos="zoom-in-left" data-aos-delay="600" href="/offre">destination</a>
-      <a data-aos="zoom-in-left" data-aos-delay="750" href="/services">services</a>
-      <a data-aos="zoom-in-left" data-aos-delay="900" href="/gallery">gallery</a>
+      <a data-aos="zoom-in-left" data-aos-delay="450" href="/offre">offre</a>
+      <a data-aos="zoom-in-left" data-aos-delay="600" href="/services">services</a>
+      <!-- <a data-aos="zoom-in-left" data-aos-delay="900" href="/gallery">gallery</a> -->
 
-      <a data-aos="zoom-in-left" data-aos-delay="900" href="/transport">transport</a>
-      <a data-aos="zoom-in-left" data-aos-delay="900" href="/add-new-Trips">your trip</a>
+      <a data-aos="zoom-in-left" data-aos-delay="750" href="/transport">transport</a>
+
+      
+
+      <% if (user) { %>
+             
+        <a data-aos="zoom-in-left" data-aos-delay="900" href="/add-new-Trips">your trip</a>
+        
+      <% }  %>
+      
+
+
 
 
             <% if (!user) { %>
              
-                <a data-aos="zoom-in-left" data-aos-delay="1300" href="/users/login"> Login</a>
+                <a data-aos="zoom-in-left" data-aos-delay="900" href="/users/login"> Login</a>
               
 
               
-                  <a data-aos="zoom-in-left" data-aos-delay="1450" href="/users/signup"> Signup</a>
+                  <a data-aos="zoom-in-left" data-aos-delay="1050" href="/users/signup"> Signup</a>
                 
               <% } else { %>
               
-                <a  data-aos="zoom-in-left" data-aos-delay="1600"class="nav-link" href="/users/logout"> logout</a>
+                <a  data-aos="zoom-in-left" data-aos-delay="1200"class="nav-link" href="/users/logout"> logout</a>
               
               <%}  %>
          

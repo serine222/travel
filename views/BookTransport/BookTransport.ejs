@@ -35,7 +35,6 @@
     </div>
     <div class="heading m">
      
-      <a data-aos="zoom-in-left" data-aos-delay="1300" href="/BookTransport/add-new-BookTranspor" class="btn">Book Transport</a>
    </div>
  
  
@@ -58,18 +57,23 @@
            <tbody>
 
                  
-            <% arrtransport.forEach(item=> { %>
+            <% arrBookTranspot.forEach(item=> { %>
                
 
              <tr >
                <td>
-                    <a  href="/transport/transport/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
+                    <a  href="/BookTranspot/BookTranspot/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
                 </td>
-               <% arrtyp_tra.forEach(itemm=> { %>
-               <% if ( item.typ_tra === itemm._id) { %>
+               <% arrtransport.forEach(itemm=> { %>
+               <% if ( item.transport === itemm._id) { %>
                <td>
-                  <%= itemm.name %>
+                  <%= itemm.date_tra %>
               </td>
+              <td>
+                <%= itemm.date_rest_tra %>
+            </td>               <td>
+              <%= itemm.typ_tra %>
+          </td>
               <% } %>
               <% }); %>  
                 <td>
