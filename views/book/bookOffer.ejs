@@ -80,22 +80,11 @@
             <input type="date" name="leaving_vol">
          </div>
 
-         <div class="inputBox">
-            
-            <span>next offre </span>
 
-            <select class="custom-select mr-sm-2" name="offre">
 
-                
-                  <option selected disabled> offre</option>
-                <% arroffre.forEach(item=> { %>
-            <option value='<%= item._id %>'>  <%= item.nom_ofr %> </option>
-            
-            <% }); %>  
-            </select>
-            
-            
-            </div>
+
+            <input name="offre" type="text" value="<%= objoffre.nom_ofr %>" style="display: none;">
+          
       
 
       <input type="submit" value="submit" class="btn" name="send">

@@ -2,28 +2,29 @@ const transport = require("../models/transportSchema");
 const typ_tra = require("../models/typ_traSchema");
 
 
-// article_create_get
 
-const transport_index_get = (req, res) => {
-  typ_tra.find() .then((result) => {
 
-    let arrtyp_tra = result;
-    transport.find()
-    .then((result) => {
-      res.render("transport/transport", { mytitle: "transport", arrtransport: result,arrtyp_tra });
-      // console.log("arrtransport: result");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const transport_index_get = async (req, res) => {
+ 
+  try {
+
+    const arrtransport = await transport.find().populate('typ_tra');
+
+    res.render('transport/transport', {  mytitle: "transport" ,arrtransport });
+  } 
+  catch (err) {
+    console.error(err);
+
+  }
+  
+};
+
+
+
 
  
-};
+
 
 const transport_add = (req, res) => {
   
@@ -69,24 +70,25 @@ const transport_post = (req, res) => {
       });
 };
 
-const transport_details_get = (req, res) => {
+const transport_details_get = async (req, res) => {
    
 
 
- typ_tra.find() .then((result) => {
-    
-  let arrtyp_tra = result;
-  transport.findById(req.params.id)
-  .then((result) => {
-    res.render("transport/details", { mytitle: "transport DETAILS", objtransport: result,arrtyp_tra });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-})
-.catch((err) => {
-  console.log(err);
-});
+
+
+
+try {
+  const { id } = req.params;
+  const objtransport = await transport.find({ _id: id }).populate('typ_tra');
+  res.render('transport/details', { mytitle: "transport DETAILS", objtransport: objtransport[0] });
+} catch (err) {
+  console.error(err);
+ 
+}
+
+
+
+
 
 };
 

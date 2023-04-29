@@ -12,7 +12,7 @@ ville_dep_ofr : {
     required: true
 },
 date_dep_ofr: {
-    type: Date,
+    type: String,
     required: true
 },
 dest_ofr:{

@@ -14,7 +14,7 @@ const transportController = require("../../controllers/transportController");
 
 
 router.get("/",transportController.transport_index_get );
-router.get("/transport/:id",isAuthenticated, transportController.transport_details_get);
+router.get("/transport/:id", transportController.transport_details_get);
 
 
 

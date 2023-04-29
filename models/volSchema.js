@@ -44,12 +44,14 @@ const volSchema = new Schema({
 user_id : {
   type: String,
   required: true
+  
 },
 
-Trips: {
+offre: {
   type: Schema.Types.ObjectId,
-  ref: 'Trips'
+  ref: 'offre'
 },
+
 created_at: {
   type: Date,
   required: true

@@ -37,3 +37,9 @@ const Trips = mongoose.model("Trips", TripsSchema
 
 // export the model
 module.exports = Trips;
+
+
+
+
+
+

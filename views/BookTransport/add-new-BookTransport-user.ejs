@@ -7,16 +7,16 @@
 <!-- header section starts  -->
 
 <!-- header section starts  -->
-<% if (user.role === 'admin') { %>
-  <%- include("../partials/header_admin.ejs") %>
-  <%- include("../partials/sidebar.ejs") %>
-
-
-<% } else { %>
-            
-<%- include("../partials/header") %>
-
-<%}  %>
+<% if (!user) { %>
+  <%- include("../partials/header") %>
+  <% } else { %>
+    <% if (user.role === 'admin') { %>
+      <%- include("../partials/header_admin.ejs") %>
+      <%- include("../partials/sidebar.ejs") %>
+    <% } else { %>
+      <%- include("../partials/header") %>
+    <%}  %>
+  <%}  %>
 
 <section class="Trips-form" >
     
@@ -50,18 +50,11 @@
    
     <div class="inputBox">
             
-      <label for="transport"> <span> transport</span></label>
+     
+       
+    <input name="transport" id="transport" type="text" value='<%= objtransport._id %>' style="display: none;" />
 
-      <select class="custom-select mr-sm-2" name="transport">
-          <option selected disabled> type</option>
-          <% arrtransport.forEach(item=> { %>
-            
-      <option value='<%= item._id %>'> <%= item._id %></option>
-      
-      <% }); %>  
-      </select>
-      
-      </div>
+     
 
     
       <button class="btn">create</button>

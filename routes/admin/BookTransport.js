@@ -25,8 +25,13 @@ const BookTransporController = require("../../controllers/BookTransportControlle
 
 
 router.get("/add-new-BookTranspor",isAuthenticated,isAdmin,BookTransporController.BookTranspor_add);
+router.post("/",isAuthenticated,isAdmin,BookTransporController.BookTranspor_post);
 
 
+
+router.get("/allBookTranspor",isAuthenticated,isAdmin,BookTransporController.BookTranspor_index_get);
+
+router.get("/BookTranspor/:id",isAuthenticated,isAdmin, BookTransporController.BookTranspor_details_get);
 
 
 

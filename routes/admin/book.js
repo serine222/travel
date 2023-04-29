@@ -21,6 +21,7 @@ function isAdmin(req, res, next) {
   };
 
 
+  router.get("/Book/:id",isAuthenticated, BookController.offre_details_get);
 
 router.get("/all-Book",isAuthenticated, BookController.Book_all_get);
 

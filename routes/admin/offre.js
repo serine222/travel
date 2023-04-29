@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 
-// const offre = require("../models/aoffreSchema");
+
+
+  
 
 const offreController = require("../../controllers/OffreController");
 
@@ -22,11 +24,26 @@ function isAdmin(req, res, next) {
     }
   }
 
+  
+  const multer = require("multer")
+  // configure multer 
+  var storage = multer.diskStorage({
+      destination: function (req, file, cb) {
+        cb(null, 'uploads/images')
+      },
+      filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + '.png') 
+      }
+    })
+  
+    var upload = multer({ storage: storage })
 
 
+router.post("/",isAuthenticated,isAdmin,upload.single('photo'), offreController.offre_post);
 
-router.post("/",isAuthenticated,isAdmin, offreController.offre_post);
 router.delete("/:id",isAuthenticated,isAdmin, offreController.offre_delete);
+
+
 
 
 

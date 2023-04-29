@@ -1,6 +1,16 @@
 const offre = require("../models/offreSchema");
 
 
+
+
+
+
+
+
+
+
+
+
 // article_create_get
 
 const offre_index_get = (req, res) => {
@@ -15,6 +25,14 @@ const offre_index_get = (req, res) => {
 };
 
 const offre_post = (req, res) => {
+
+
+
+const multer = require("multer")
+// configure multer 
+
+
+
  
 
     let offres = new offre({
@@ -26,8 +44,7 @@ const offre_post = (req, res) => {
     dest_ofr: req.body.dest_ofr,
     dure_ofr: req.body.dure_ofr,
     prix_ofr:  req.body.prix_ofr,
-    photo: req.body.photo,
-    
+    photo: req.file.filename,
     
     created_at:  Date.now()
 
@@ -44,6 +61,13 @@ const offre_post = (req, res) => {
         console.log(err);
       });
 };
+
+
+
+
+
+
+
 
 const offre_details_get = (req, res) => {
    

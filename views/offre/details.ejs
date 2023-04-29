@@ -16,14 +16,16 @@
   <% if (user.role === 'admin') { %>
     <%- include("../partials/header_admin.ejs") %>
     <%- include("../partials/sidebar.ejs") %>
+
   <% } else { %>
     <%- include("../partials/header") %>
-  
   <%}  %>
   
   
 
 <%}  %>
+
+
 
 <section class="Trips-form" >
     <h1>Create new offre</h1>
@@ -84,11 +86,49 @@
     </div>
 
       
-    <button data-linkid="<%= objoffre._id %>" class="btn create">
-      Delete this offre
-  </button>
 
-    </form>
+
+
+
+
+
+
+
+  <% if (!user) { %>
+
+
+    <a class="btn create" href="/book/Book/<%= objoffre._id %>">book</a>
+    
+    <% } else { %>
+                
+    
+      <% if (user.role === 'admin') { %>
+        <button data-linkid="<%= objoffre._id %>" class="btn create">
+          Delete this offre
+      </button>
+        <a class="btn create" href="/admin/book/Book/<%= objoffre._id %>">book</a>
+
+      <% } else { %>
+        <a class="btn create" href="/book/Book/<%= objoffre._id %>">book</a>
+      <%}  %>
+      
+      
+    
+    <%}  %>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

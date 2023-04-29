@@ -16,7 +16,11 @@ Num_tel: {
   type: String,
   required: true
 },
-
+user_id : {
+  type: String,
+  required: true
+  
+},
 
 transport: {
   type: Schema.Types.ObjectId,

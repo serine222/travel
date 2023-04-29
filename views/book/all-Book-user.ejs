@@ -1,0 +1,137 @@
+
+
+<%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<!-- header section starts  -->
+
+
+
+
+   <% if (!user) { %>
+
+
+      <%- include("../partials/header") %>
+      
+      <% } else { %>
+                  
+      
+        <% if (user.role === 'admin') { %>
+          <%- include("../partials/header_admin.ejs") %>
+          <%- include("../partials/sidebar.ejs") %>
+      
+        <% } else { %>
+          <%- include("../partials/header") %>
+        <%}  %>
+        
+        
+      
+      <%}  %>
+
+<!-- header section ends -->
+
+<div data-aos="zoom-in-left" data-aos-delay="1900" class="heading m-max">
+  
+   <h1> All bookings</h1>
+</div>
+<!-- booking section starts  -->
+
+<section data-aos="zoom-in-left" data-aos-delay="2050" class="book" >
+<!-- <div class=" pages-form "> -->
+   <!-- <div class="container"> -->
+
+      <div class="heading m">
+         <span>All reservations</span>
+       
+      </div>
+<br>
+   <table>
+      <%- include('../partials/flashMessages') -%>
+
+      <thead>
+         <tr>  
+           <th >name </th>
+           <th scope="col">email</th>
+           <th scope="col">where to</th>
+           <th scope="col">how many</th>
+          
+
+         </tr>
+       </thead>
+
+       <tbody>
+
+
+
+
+
+
+
+         <tr >
+           
+            <% arrBooks.forEach(item=> { %>
+            
+         <% if ( item.user_id == user._id ) { %>
+
+ <td>
+               <%= item.name_vol %>
+            </td>
+            
+            <td>
+               <%= item.email_vol %>
+             
+            </td>
+            
+           
+            
+            
+            <td>
+               <%= item.location_vol %>
+            </td>
+            
+            
+            <td>
+               <%= item.prix_vol %>
+            </td>
+            
+            
+
+          
+           <tr class="spacer"><td colspan="100"></td></tr>
+
+          </tr>
+            
+            
+         
+                        
+            
+          
+        
+              
+            
+            <%}  %>
+
+           
+          <% }); %>  
+
+
+       </tbody>
+      </table>
+      </div>
+   </div>
+<!-- </div> -->
+
+   </div>
+</section>
+<!-- booking section ends -->
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->
+
+<!-- footer section ends -->

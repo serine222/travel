@@ -36,49 +36,49 @@
  
  </section>
 
- <section class="book-home" id="book-home ">
+ <!-- <section class="book-home" id="book-home ">
   <div class="form">
     <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
       <span>where to?</span>
 
 
-      <!-- <input
+      <input
         type="text"
         placeholder="place name"
         id="ville_dep_ofr-input"
         value=""
-      /> -->
+      />
 
-      <select
+       <select
        type="text"
         placeholder="place name"
          id="ville_dep_ofr-input"
           class="custom-select mr-sm-2"
-           name="ville_dep_ofr-input"
-          >
+          
+          > 
 
-        <option selected disabled> where to?</option>
+         <option selected disabled> where to?</option>
         <% arroffre.forEach(item=> { %>
-    <option value='<%= item.ville_dep_ofr %>'>  <%= item.ville_dep_ofr %> </option>
+    <option value=''>  <%= item.ville_dep_ofr %> </option>
     
     <% }); %>  
-    </select>
+    </select> 
 
 
     </div>
     <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
       <span>when?</span>
 
-      <!-- <input type="date" id="departure-date-input" value="" /> -->
+      <input type="date" id="departure-date-input" value="" />
 
       <select type="date"
        id="departure-date-input"
         class="custom-select mr-sm-2"
-         name="departure-date-input"
+        
          >
         <option selected disabled> when?</option>
         <% arroffre.forEach(item=> { %>
-    <option value='<%= item.date_dep_ofr %>'>  <%= item.date_dep_ofr %> </option>
+    <option value=''>   </option>
     
     <% }); %>  
     
@@ -95,10 +95,84 @@
        placeholder="number of travelers" 
        id="prix_ofr-input"
         class="custom-select mr-sm-2" 
-        name="prix_ofr-input">
+       >
         <option selected disabled> how many?</option>
         <% arroffre.forEach(item=> { %>
-    <option value='<%= item.prix_ofr %>'>  <%= item.prix_ofr %> </option>
+    <option value=''>  <%= item.prix_ofr %> </option>
+    
+    <% }); %>  
+    </select>
+
+
+
+
+
+    </div>
+
+    <button
+      onclick="filteroffres()"
+      data-aos="zoom-in"
+      data-aos-delay="600"
+      class="btn"
+    >
+      find now
+    </button>
+  </div>
+</section> -->
+
+
+
+<section class="book-home" id="book-home ">
+  <div class="form">
+    <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+      <span>where to?</span>
+
+
+      <input
+        type="text"
+        placeholder="place name"
+        id="ville_dep_ofr-input"
+        value=""
+      />
+     
+
+  
+
+
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+      <span>when?</span>
+
+      <!-- <input type="date" id="departure-date-input" value="" /> -->
+
+      <select type="date"
+       id="departure-date-input"
+        class="custom-select mr-sm-2"
+     
+         >
+        <option selected disabled> when?</option>
+        <% arroffre.forEach(item=> { %>
+    <option value="">  <%= item.date_dep_ofr %> </option>
+    
+    <% }); %>  
+    
+    </select>
+
+
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+      <span>how many?</span>
+
+
+      <select 
+      type="number"
+       placeholder="number of travelers" 
+       id="prix_ofr-input"
+        class="custom-select mr-sm-2" 
+       >
+        <option selected disabled> how many?</option>
+        <% arroffre.forEach(item=> { %>
+    <option value=''>  <%= item.prix_ofr %> </option>
     
     <% }); %>  
     </select>
@@ -120,7 +194,7 @@
   </div>
 </section>
 
-<section class="destination" id="destination">
+<<section class="destination" id="destination">
   <div id="offre-list">
     <div class="box-container" id="offre-list"></div>
   </div>
@@ -157,6 +231,7 @@
 
 
 
+
 <script>
   function filteroffres() {
     const nom_ofr = document.getElementById("ville_dep_ofr-input").value;
@@ -173,7 +248,7 @@
         const filteredoffres = arroffre.filter((offre) => {
           if (
             nom_ofr &&
-            nom_ofr.toLowerCase() !== offre.nom_ofr.toLowerCase()
+            nom_ofr.toLowerCase() !== offre.ville_dep_ofr.toLowerCase()
           ) {
             return false;
           }
@@ -238,5 +313,3 @@
     xhr.send();
   }
 </script>
-
-  

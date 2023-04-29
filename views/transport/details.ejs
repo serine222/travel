@@ -7,7 +7,7 @@
 
 
 <body>
-   
+  <% if (user) { %>
 <!-- header section starts  -->
 
 <!-- header section starts  -->
@@ -22,21 +22,15 @@
 
 <%}  %>
 
-
+<%}  %>
+<%- include("../partials/header") %>
 
 <!-- header section ends -->
 
 
 
 <section class="Trips-form" >
-  <a data-aos="zoom-in-left" data-aos-delay="1300" href="/transport/add-new-transport" class="btn">book now</a>
-
-
-
-
-
-
-
+ 
 
 
 
@@ -80,21 +74,42 @@
       <label for="typ_tra"> <span>type </span></label>
       <p class="form-control">
 
-        <% arrtyp_tra.forEach(item=> { %>
-        <% if ( item._id === objtransport.typ_tra) { %>
+      
           <td>
-             <%= item.name %>
+             <%= objtransport.typ_tra.name %>
          </td>
-         <% } %>
-         <% }); %>  
+        
     </p>
     </div>
     
-    <button data-linkid="transport/<%= objtransport._id %>" class="btn create">
-        Delete this transport
-    </button>
+
       
-     
+       
+    <% if (!user) { %>
+
+      <a class="btn create" href="/BookTransport/bookUser/<%= objtransport._id %>">book</a>
+
+
+      
+      <% } else { %>
+                  
+      
+        <% if (user.role === 'admin') { %>
+          <button data-linkid="transport/<%= objtransport._id %>" class="btn create">
+            Delete this transport
+        </button>
+          <a class="btn create" href="/admin/book/Book/<%= objtransport._id %>">book</a>
+  
+        <% } else { %>
+          <a class="btn create" href="/BookTransport/bookUser/<%= objtransport._id %>">book</a>
+        <%}  %>
+        
+        
+       
+      <%}  %>
+
+
+
 
     </form>
 

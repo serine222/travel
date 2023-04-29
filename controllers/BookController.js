@@ -1,5 +1,5 @@
 const Vol = require("../models/volSchema");
-const Trips = require("../models/TripsSchema");
+const offre = require("../models/offreSchema");
 const { check, validationResult } = require('express-validator/check');
 
 
@@ -7,9 +7,9 @@ const { check, validationResult } = require('express-validator/check');
 
 const Book_index_get = (req, res) => {
 
-    Trips.find()
+  offre.find()
     .then((result) => {
-      res.render("book/book", { mytitle: "book", arrTrips: result,errors: req.flash('errors') });
+      res.render("book/book", { mytitle: "book", arroffre: result,errors: req.flash('errors'), message: req.flash('info')  });
     })
     .catch((err) => {
       console.log(err);
@@ -27,11 +27,28 @@ const Book_all_get = (req, res) => {
     Vol.find()
     .then((result) => {
       res.render("book/all-Book", { mytitle: "all-Book", arrBooks: result , message: req.flash('info') });
+      
+
     })
     .catch((err) => {
       console.log(err);
     });
    
+};
+
+const Book_user_all_get = (req, res) => {
+    
+
+  Vol.find()
+  .then((result) => {
+    res.render("book/all-Book-user", { mytitle: "all-Book", arrBooks: result });
+    
+
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+ 
 };
 
 
@@ -60,14 +77,14 @@ const Book_post = (req, res) => {
               arrivals_vol: req.body.arrivals_vol,
               user_id:  req.user.id,
               leaving_vol:  req.body.leaving_vol,
-              Trips:  req.body.Trips,
+              offre:  req.body.offre,
               created_at: Date.now()
           })
-            vol
+          vol
             .save()
             .then((result) => {
               req.flash('info', ' The event was created successfuly')
-              res.redirect("book/all-Book");
+              res.redirect('book/book' );
               //console.log(req.body);
             })
             .catch((err) => {
@@ -83,7 +100,7 @@ const Book_details_get = (req, res) => {
    
  // result =   object  inside mongo database
 
- vol.findById(req.params.id)
+ Vol.findById(req.params.id)
  .then((result) => {
    res.render("book/details", { mytitle: "Book DETAILS", objBook: result });
  })
@@ -93,9 +110,24 @@ const Book_details_get = (req, res) => {
 
 };
 
+
+const offre_details_get = (req, res) => {
+   
+  // result =   object  inside mongo database
+ 
+  offre.findById(req.params.id)
+  .then((result) => {
+    res.render("book/bookOffer", { mytitle: "Book", objoffre: result });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+ };
+
 const Book_delete = (req, res) => {
     
-    vol.findByIdAndDelete(req.params.id)
+  Vol.findByIdAndDelete(req.params.id)
 
     .then((params) => {
       res.json({ mylink: "/all-Book" });
@@ -112,5 +144,7 @@ module.exports = {
     Book_details_get,
     Book_delete,
     Book_all_get,
+    Book_user_all_get,
+    offre_details_get,
     
 };

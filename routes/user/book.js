@@ -13,10 +13,9 @@ isAuthenticated = (req,res,next) => {
 
 
 
-router.get("/",
- BookController.Book_index_get);
+router.get("/",BookController.Book_index_get);
 
-
+ router.get("/Book/:id", BookController.offre_details_get);
 
 router.get("/Book",isAuthenticated, BookController.Book_index_get);
 
@@ -37,6 +36,9 @@ router.post("/",isAuthenticated,[
 
 
 router.get("/:id",isAuthenticated, BookController.Book_details_get);
+
+router.get("/user/all",isAuthenticated, BookController.Book_user_all_get);
+
 
 router.delete("/:id",isAuthenticated, BookController.Book_delete);
 

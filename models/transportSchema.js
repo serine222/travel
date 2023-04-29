@@ -25,6 +25,7 @@ typ_tra: {
   type: Schema.Types.ObjectId,
   ref: 'typ_tra'
 },
+
 created_at: {
   type: Date,
   required: true
@@ -41,6 +42,8 @@ const transport = mongoose.model("transport", transportSchema);
  // export the model
 
 module.exports = transport ;
+
+
 
 
 

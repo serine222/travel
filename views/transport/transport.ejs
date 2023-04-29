@@ -29,65 +29,82 @@
 
    
 
-    <div class="heading m">
-       <span>All transport</span>
-     
-    </div>
-    <div class="heading m">
-     
-      <a data-aos="zoom-in-left" data-aos-delay="1300" href="/BookTransport/add-new-BookTranspor" class="btn">Book Transport</a>
-   </div>
+  
+   
  
  
  
        
    <section data-aos="zoom-in-left" data-aos-delay="2050" class="transport" >  
-        <table >
-            <thead>
-              <tr>  
-  
-               <th >Processes </th>
-               <th >transport prix_tra</th>
-            
-               <th >name </th>
- 
-             </tr>
-           </thead>
 
+    <div class="heading m">
+     
+      <a data-aos="zoom-in-left" data-aos-delay="1300" href="/BookTransport/add-new-BookTranspor" class="btn">Book Transport</a>
+      <div class="heading m">
+     
+        <span>All transport</span>
+     </div>   </div>
+
+<br>
+<table>
+   <%- include('../partials/flashMessages') -%>
+
+   <thead>
+      <tr>  
+         <th >Processes </th>
+         <th scope="col">name </th>
+         <th scope="col">transport prix</th>
+         <th scope="col">data </th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr >
+        
+        <% arrtransport.forEach(item=> { %>
          
-           <tbody>
 
-                 
-            <% arrtransport.forEach(item=> { %>
-               
+         <td>
+          <a  href="/transport/transport/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
 
-             <tr >
-               <td>
-                    <a  href="/transport/transport/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
-                </td>
-               <% arrtyp_tra.forEach(itemm=> { %>
-               <% if ( item.typ_tra === itemm._id) { %>
-               <td>
-                  <%= itemm.name %>
-              </td>
-              <% } %>
-              <% }); %>  
-                <td>
-                   <%= item.prix_tra %>
-                </td>
-                
- 
-              
-              
-              
-              </tr>
+         </td>
+         
+        
+
+        
+         
+
+          <td>
+             <%= item.typ_tra.name %>
+         </td>
+
+        
+
+           <td>
+              <%= item.prix_tra %>
+           </td>
+         
+         
+         <td>
+             <%= item.date_tra %>
+         </td>
+         
 
 
-              <% }); %>  
- 
- 
-            </tbody>
-        </table>
+       
+        <tr class="spacer"><td colspan="100"></td></tr>
+
+       </tr>
+       <% }); %>  
+
+
+    </tbody>
+   </table>
+   </div>
+
+
+        
       </section>
    </div>
    </div>

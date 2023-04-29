@@ -1,5 +1,5 @@
 
-   <%- include("../partials/head") %> 
+<%- include("../partials/head") %> 
 
    
 <!-- header section starts  -->
@@ -49,10 +49,10 @@
         <% arrBookTranspot.forEach(item=> { %>
                
          
-  
-
+         <% if (user) { %>
+         <% if ( item.user_id == user._id ) { %>
 <td>
-  <a  href="/admin/BookTranspor/BookTranspor/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
+  <a  href="/BookTransport/BookTranspor/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
 
          </td>
          
@@ -89,7 +89,9 @@
        
      
            
-         
+       <%}  %>
+       <%}  %>
+
            
          
        <% }); %> 
