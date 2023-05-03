@@ -36,90 +36,7 @@
  
  </section>
 
- <!-- <section class="book-home" id="book-home ">
-  <div class="form">
-    <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
-      <span>where to?</span>
-
-
-      <input
-        type="text"
-        placeholder="place name"
-        id="ville_dep_ofr-input"
-        value=""
-      />
-
-       <select
-       type="text"
-        placeholder="place name"
-         id="ville_dep_ofr-input"
-          class="custom-select mr-sm-2"
-          
-          > 
-
-         <option selected disabled> where to?</option>
-        <% arroffre.forEach(item=> { %>
-    <option value=''>  <%= item.ville_dep_ofr %> </option>
-    
-    <% }); %>  
-    </select> 
-
-
-    </div>
-    <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
-      <span>when?</span>
-
-      <input type="date" id="departure-date-input" value="" />
-
-      <select type="date"
-       id="departure-date-input"
-        class="custom-select mr-sm-2"
-        
-         >
-        <option selected disabled> when?</option>
-        <% arroffre.forEach(item=> { %>
-    <option value=''>   </option>
-    
-    <% }); %>  
-    
-    </select>
-
-
-    </div>
-    <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
-      <span>how many?</span>
-
-
-      <select 
-      type="number"
-       placeholder="number of travelers" 
-       id="prix_ofr-input"
-        class="custom-select mr-sm-2" 
-       >
-        <option selected disabled> how many?</option>
-        <% arroffre.forEach(item=> { %>
-    <option value=''>  <%= item.prix_ofr %> </option>
-    
-    <% }); %>  
-    </select>
-
-
-
-
-
-    </div>
-
-    <button
-      onclick="filteroffres()"
-      data-aos="zoom-in"
-      data-aos-delay="600"
-      class="btn"
-    >
-      find now
-    </button>
-  </div>
-</section> -->
-
+ 
 
 
 <section class="book-home" id="book-home ">
@@ -142,62 +59,29 @@
     </div>
     <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
       <span>when?</span>
-
-      <!-- <input type="date" id="departure-date-input" value="" /> -->
-
-      <select type="date"
-       id="departure-date-input"
-        class="custom-select mr-sm-2"
-     
-         >
-        <option selected disabled> when?</option>
-        <% arroffre.forEach(item=> { %>
-    <option value="">  <%= item.date_dep_ofr %> </option>
-    
-    <% }); %>  
-    
-    </select>
-
-
+      <input type="date" id="departure-date-input" />
     </div>
     <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
-      <span>how many?</span>
-
-
-      <select 
-      type="number"
-       placeholder="number of travelers" 
-       id="prix_ofr-input"
-        class="custom-select mr-sm-2" 
-       >
-        <option selected disabled> how many?</option>
-        <% arroffre.forEach(item=> { %>
-    <option value=''>  <%= item.prix_ofr %> </option>
-    
-    <% }); %>  
-    </select>
-
-
-
-
-
+      <span>max Price?</span>
+      <input type="number" placeholder="max Price" id="prix_ofr-input" />
     </div>
+    
 
     <button
-      onclick="filteroffres()"
-      data-aos="zoom-in"
-      data-aos-delay="600"
-      class="btn"
-    >
-      find now
-    </button>
-  </div>
+    onclick="filteroffres()"
+    data-aos="zoom-in"
+    data-aos-delay="600"
+    class="btn"
+  >
+    find now
+  </button>
+</div>
 </section>
 
-<<section class="destination" id="destination">
-  <div id="offre-list">
-    <div class="box-container" id="offre-list"></div>
-  </div>
+<section class="destination" id="destination">
+<div id="offre-list">
+  <div class="box-container" id="offre-list"></div>
+</div>
 </section>
 
 <div class="banner">
@@ -244,23 +128,25 @@
       if (this.readyState == 4 && this.status == 200) {
         const arroffre = JSON.parse(this.responseText);
 
-        // Filter the list of offres based on user input
-        const filteredoffres = arroffre.filter((offre) => {
-          if (
-            nom_ofr &&
-            nom_ofr.toLowerCase() !== offre.ville_dep_ofr.toLowerCase()
-          ) {
-            return false;
-          }
-          if (date_dep_ofr && date_dep_ofr > offre.date_dep_ofr) {
-            return false;
-          }
-          if (prix_ofr && prix_ofr > offre.prix_ofr) {
-            return false;
-          }
+       // Filter the list of offres based on user input
+            const filteredoffres = arroffre.filter((offre) => {
+              if (
+                nom_ofr &&
+                !offre.ville_dep_ofr
+                  .toLowerCase()
+                  .includes(nom_ofr.toLowerCase())
+              ) {
+                return false;
+              }
+              if (date_dep_ofr && date_dep_ofr !== offre.date_dep_ofr) {
+                return false;
+              }
+              if (prix_ofr && prix_ofr > offre.prix_ofr) {
+                return false;
+              }
 
-          return true;
-        });
+              return true;
+            });
 
         // Dynamically populate the list of filtered offres
         const offreList = document.querySelector(".box-container");

@@ -6,7 +6,7 @@ const offreController = require("../../controllers/OffreController");
 
 
 
-router.get("/",offreController.git_Offre );
+router.get("/",offreController.get_Offre );
 
 
 

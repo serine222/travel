@@ -14,7 +14,7 @@ isAuthenticated = (req,res,next) => {
 
 
 router.get("/",offreController.offre_index_get );
-router.get("/all-offre",offreController.git_allOffre );
+router.get("/all-offre",offreController.get_allOffre );
 
 router.get("/:id", offreController.offre_details_get);
 

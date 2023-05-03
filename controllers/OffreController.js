@@ -96,7 +96,7 @@ const offre_delete = (req, res) => {
     });
 };
 
-const git_allOffre = (req, res) => {
+const get_allOffre = (req, res) => {
     
   offre.find()
   .then((result) => {
@@ -107,7 +107,7 @@ const git_allOffre = (req, res) => {
   });
 };
 
-const git_Offre = (req, res) => {
+const get_Offre = (req, res) => {
     
 
   
@@ -126,6 +126,6 @@ module.exports = {
     offre_post,
     offre_details_get,
     offre_delete,
-    git_Offre,
-    git_allOffre
+    get_Offre,
+    get_allOffre
 };

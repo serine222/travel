@@ -37,16 +37,17 @@ const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
 
 
-
-
 // session and flash config .
-app.use(session({
-  secret: 'lorem ipsum',
-  resave: false,
-  saveUninitialized: false,
-  cookie:{_expires : 60000000*600},
-  cookie:{maxAge : 60000000*600},
-}));
+app.use(
+  session({
+    secret: "lorem ipsum",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60000000 },
+  })
+);
+
+
 
 
 app.use(flash());
@@ -76,7 +77,7 @@ function isAdmin(req, res, next) {
 
 app.get('/admin/home', isAuthenticated, isAdmin, function(req, res) {
   // Code to display admin dashboard goes here
-  res.render("home",{mytitle: "HOME"})
+  res.render("home",{mytitle: "home"})
 });
 
 
@@ -92,7 +93,7 @@ app.use("/home",  homeRouter);
 
 
 
-app.get("/about",isAdmin, (req, res) => {
+app.get("/about", (req, res) => {
   res.render("about",{mytitle: "about"})
 });
 

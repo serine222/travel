@@ -8,7 +8,6 @@ isAuthenticated = (req,res,next) => {
 
 
 
-// const transport = require("../models/atransportSchema");
 
 const transportController = require("../../controllers/transportController");
 

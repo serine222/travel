@@ -27,69 +27,47 @@
 
 
 
-<section class="Trips-form" >
-    <h1>Create new offre</h1>
+<section class="about" >
+    
 
-    <div class="heading m">
-      <span>book your offre!</span>
-      <h1>details new offre</h1>
+
+      
    </div>
 
+   <div class="video-container m" data-aos="fade-right" data-aos-delay="300">
+  
+    <img src="<%= '/images/' + objoffre.photo%>" alt="">
+</div>
+
+<div class="content" data-aos="fade-left" data-aos-delay="600">
 
 
-    
-    <form method="#" action="#" >
+  <h1>Create new offre</h1>
 
-      <div class="inputBox">
-      <label for="nom_ofr"> <span> nome offre </span></label>
-      <p class="form-control">
-        <%=objoffre.nom_ofr %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="ville_dep_ofr"> <span>The starting city of an offer </span></label>
-      
-      <p class="form-control">
-        <%=objoffre.ville_dep_ofr %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="date_dep_ofr"> <span>The start date of an offer </span></label>
-      <p class="form-control">
-        <%=objoffre.date_dep_ofr %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="dest_ofr"> <span>The destination city of an offer </span></label>
-      
-      <p class="form-control">
-        <%=objoffre.dest_ofr %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="dure_ofr"> <span>The duration of an offer </span></label>
-      <p class="form-control">
-        <%=objoffre.dure_ofr %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="prix_ofr"> <span>The offer price </span></label>
-      <p class="form-control">
-        <%=objoffre.prix_ofr %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="photo"> <span>offres photo: </span></label>
-      <p class="form-control">
-        <%=objoffre.photo %>
-    </p>
-    </div>
+    <div class="heading m">
+   
+      <h1>details  offre</h1>
+</div>
 
-      
+  <span>nome offre</span>
+  <p>   <%=objoffre.nom_ofr %></p>
+
+  <span>The starting city of an offer</span>
+  <p>  <%=objoffre.ville_dep_ofr %></p>
+
+  <span>The start date of an offer</span>
+  <p>    <%=objoffre.date_dep_ofr %></p>
+
+  <span>The destination city of an offer</span>
+  <p>     <%=objoffre.dest_ofr %></p>
+
+  
+  <span>The duration of an offer</span>
+  <p>   <%=objoffre.dure_ofr %></p>
 
 
-
-
+  <span>The offer price</span>
+  <p>   <%=objoffre.prix_ofr %></p>
 
 
 
@@ -130,7 +108,7 @@
 
 
 
-
+</div>
 
 
 
