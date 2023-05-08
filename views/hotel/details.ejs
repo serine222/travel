@@ -44,43 +44,86 @@
     
     <form method="#" action="#" >
 
-      <div class="inputBox">
-      <label for="date_tra"> <span>The start date </span></label>
-      <p class="form-control">
-        <%= objhotel.date_tra %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="date_rest_tra"> <span>The date of return </span></label>
       
+
+
+    <div class="inputBox">
+      <label for="name"> <span>name</span></label>
       <p class="form-control">
-        <%= objhotel.date_rest_tra %>
+        <%= objhotel.name %>
     </p>
     </div>
     <div class="inputBox">
-      <label for="prix_tra"> <span>hotel prix </span></label>
+      <label for="type"> <span>type  </span></label>
       <p class="form-control">
-        <%= objhotel.prix_tra %>
+        <%= objhotel.type %>
     </p>
     </div>
     <div class="inputBox">
-      <label for="mp_tra"> <span>company hotel </span></label>
-      
+      <label for="city"> <span>city </span></label>
       <p class="form-control">
-        <%= objhotel.cmp_tra %>
+        <%= objhotel.city %>
     </p>
     </div>
-    <!-- <div class="inputBox">
-      <label for="typ_tra"> <span>type </span></label>
+    <div class="inputBox">
+      <label for="address"> <span>address</span></label>
+      <p class="form-control">
+        <%= objhotel.address %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="distance"> <span>distance</span></label>
+      <p class="form-control">
+        <%= objhotel.distance %>
+    </p>
+    </div>
+   
+    <div class="inputBox">
+      <label for="photohotel"> <span>photos</span></label>
+      <p class="form-control">
+        <%= objhotel.photohotel %>
+    </p>
+    </div>
+   
+    <div class="inputBox">
+      <label for="title"> <span>title</span></label>
+      <p class="form-control">
+        <%= objhotel.title %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="desc"> <span>desc</span></label>
+      <p class="form-control">
+        <%= objhotel.desc %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="rating"> <span>rating</span></label>
+    
       <p class="form-control">
 
-      
-          <td>
-           
-         </td>
-        
+
+        <%     for (let i = 0; i < objhotel.rating; i++) {%>
+          
+          <span class="fa fa-star checked"></span>
+
+          <% }; %>  
+
+
     </p>
-    </div> -->
+    </div>
+    <div class="inputBox">
+      <label for="cheapestPrice"> <span>cheapestPrice</span></label>
+      <p class="form-control">
+        <%= objhotel.cheapestPrice %>
+    </p>
+    </div>
+    <div class="inputBox">
+      <label for="featured"> <span>featured</span></label>
+      <p class="form-control">
+        <%= objhotel.featured %>
+    </p>
+  </div>
     
 
       

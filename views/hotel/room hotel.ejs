@@ -35,24 +35,18 @@
    <section class="book-offre" id="book-home ">
 
     <div class="heading m">
-       <span>our hotel</span>
        <h1>rooms</h1>
-
    </div>
    
     <div class="form">
       <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
         <span>Room name</span>
-  
-  
         <input
           type="text"
           placeholder="place name"
           id="ville_dep_ofr-input"
           value=""
         />
-       
-  
       </div>
       <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
         <span>max People</span>
@@ -62,8 +56,6 @@
         <span>max Price?</span>
         <input type="number" placeholder="max Price" id="prix_ofr-input" />
       </div>
-      
-  
       <button
       onclick="filterrooms()"
       data-aos="zoom-in"
@@ -84,10 +76,9 @@
 <section class="destination" id="destination">
    <div class="heading m">
      
-      <a data-aos="zoom-in-left" data-aos-delay="1300" href="/Bookhotel/add-new-Bookhotel" class="btn">Book hotel</a>
       <div class="heading m">
      
-        <span>All room hotel</span>
+      
      </div>   </div>
 
    
@@ -104,12 +95,11 @@
 
           </div>
           <div class="content">
-        
+            <p> <%=item.hotel.name %></p>
               <h3><%=item.name %></h3>
-              <p> <%=item.maxPeople %></p>
+              
               <p> <%=item.desc %></p>
-              <p> <%=item.title %></p>
-              <p> <%=item.hotel.name %></p>
+              
               <a  href="/hotel/room/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
               
               

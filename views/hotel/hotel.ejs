@@ -104,10 +104,23 @@
 
            </div>
            <div class="content">
-               <h3<%= item.name %></h3>
-               <p>  <%= item.address %></p>
+
+            <%     for (let i = 0; i < item.rating; i++) {%>
           
+              <span class="fa fa-star checked"></span>
+    
+              <% }; %>  
+               <h3><%= item.name %></h3>
+               <p>  <%= item.address %>
+              
+              
+                  
+              
+              
+              </p>
           
+
+
                <a  href="/hotel/hotel/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
            </div>
        </div>
