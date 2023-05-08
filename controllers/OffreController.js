@@ -1,16 +1,5 @@
 const offre = require("../models/offreSchema");
 
-
-
-
-
-
-
-
-
-
-
-
 // article_create_get
 
 const offre_index_get = (req, res) => {
@@ -26,18 +15,8 @@ const offre_index_get = (req, res) => {
 
 const offre_post = (req, res) => {
 
-
-
-const multer = require("multer")
-// configure multer 
-
-
-
- 
-
     let offres = new offre({
-      
-    
+
     nom_ofr : req.body.nom_ofr,
     ville_dep_ofr : req.body.ville_dep_ofr,
     date_dep_ofr:  req.body.date_dep_ofr,

@@ -29,7 +29,7 @@ function isAdmin(req, res, next) {
   // configure multer 
   var storage = multer.diskStorage({
       destination: function (req, file, cb) {
-        cb(null, 'uploads/images')
+        cb(null, 'uploads/images/offre')
       },
       filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + '.png') 

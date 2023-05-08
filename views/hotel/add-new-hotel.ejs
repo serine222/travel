@@ -1,0 +1,115 @@
+
+
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<!-- header section starts  -->
+<% if (user.role === 'admin') { %>
+  <%- include("../partials/header_admin.ejs") %>
+  <%- include("../partials/sidebar.ejs") %>
+
+
+<% } else { %>
+            
+<%- include("../partials/header") %>
+
+<%}  %>
+
+<section class="Trips-form" >
+    
+
+    <div class="heading m">
+      <span> hotel!</span>
+      <h1>Create new hotel</h1>
+   </div>
+
+
+
+    
+    <form method="POST" action="/admin/hotel" enctype="multipart/form-data">
+
+      <%- include('../partials/flashMessages') -%>
+      <div class="inputBox">
+      <label for="name"> <span>name</span></label>
+        <input name="name" id="name" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="type"> <span>type  </span></label>
+      <input name="type" id="type" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="city"> <span>city </span></label>
+    <input name="city" id="city" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="address"> <span>address</span></label>
+    <input name="address" id="address" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="distance"> <span>distance</span></label>
+    <input name="distance" id="distance" type="text" />
+    </div>
+   
+    <div class="inputBox">
+      <label for="photohotel"> <span>photos</span></label>
+    <input name="photohotel" id="photohotel" type="file" />
+    </div>
+   
+    <div class="inputBox">
+      <label for="title"> <span>title</span></label>
+    <input name="title" id="title" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="desc"> <span>desc</span></label>
+    <input name="desc" id="desc" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="rating"> <span>rating</span></label>
+    
+    <input type="range"  min="0" max="5" step="1" value="5"name="rating" id="rating"  >
+    </div>
+    <div class="inputBox">
+      <label for="cheapestPrice"> <span>cheapestPrice</span></label>
+    <input name="cheapestPrice" id="cheapestPrice" type="number" />
+    </div>
+    <div class="inputBox">
+      <label for="featured"> <span>featured</span></label>
+    <!-- <input name="featured" id="featured" type="number" />
+    </div> -->
+    <label>
+      <input type="radio" name="featured" value="1"> True
+    </label>
+    <label>
+      <input type="radio" name="featured" value="0"> False
+    </label>
+  </div>
+   
+   
+    
+      <button class="btn">create</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->
+
+
+
+

@@ -2,7 +2,7 @@
 
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = 3000;
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.static('uploads'))
@@ -17,6 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 const adminbookRouter = require("./routes/admin/book");
 const adminTripsRouter = require("./routes/admin/Trips");
 const adminoffreRouter = require("./routes/admin/offre");
+
+const adminhotelRouter = require("./routes/admin/hotel");
+const adminBookhotelRouter = require("./routes/admin/Bookhotel");
+
 const admintransportRouter = require("./routes/admin/transport");
 const adminBookTransporRouter = require("./routes/admin/BookTransport");
 
@@ -26,6 +30,10 @@ const adminBookTransporRouter = require("./routes/admin/BookTransport");
 const userbookRouter = require("./routes/user/book");
 const userTripsRouter = require("./routes/user/Trips");
 const useroffreRouter = require("./routes/user/offre");
+
+const userhotelRouter = require("./routes/user/hotel");
+const userBookhotelRouter = require("./routes/user/Bookhotel");
+
 const usertransportRouter = require("./routes/user/transport");
 const userBookTransporRouter = require("./routes/user/BookTransport");
 
@@ -117,6 +125,9 @@ app.use("/admin/Trips", adminTripsRouter);
 // all-transport PATH
 app.use("/admin/transport", admintransportRouter);
 app.use("/admin/BookTranspor", adminBookTransporRouter);
+// all-hotel PATH
+app.use("/admin/hotel", adminhotelRouter);
+app.use("/admin/Bookhotel", adminBookhotelRouter);
 
 
 // app.get("/admin/add-new-transport",isAuthenticated,isAdmin, (req, res) => {
@@ -149,6 +160,10 @@ app.get("/add-new-Trips",isAuthenticated, (req, res) => {
 app.use("/transport", usertransportRouter);
 app.use("/BookTransport", userBookTransporRouter);
 
+// all-hotel PATH
+app.use("/hotel", userhotelRouter);
+app.use("/Bookhotel", userBookhotelRouter);
+
 // all-offre PATH
 app.use("/offre", useroffreRouter);
 
@@ -160,9 +175,9 @@ app.use("/offre", useroffreRouter);
 
 
 
-app.listen(3000, ()=> {
+app.listen(port, ()=> {
 
-  console.log(' app is wokring on port 3000')
+  console.log(' app is wokring on port ')
 })
 
 

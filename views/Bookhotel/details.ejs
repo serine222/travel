@@ -7,7 +7,7 @@
 
 
 <body>
-  <% if (user) { %>
+   
 <!-- header section starts  -->
 
 <!-- header section starts  -->
@@ -22,28 +22,17 @@
 
 <%}  %>
 
-<%}  %>
-<%- include("../partials/header") %>
+
 
 <!-- header section ends -->
 
 
 
 <section class="Trips-form" >
- 
-
-  <div class="about video-container m" data-aos="fade-right" data-aos-delay="300">
-    <img src="<%= '/images/phototransport/' + objtransport.phototransport%>" alt="">
-
-
-  
-</div>
-
-
-
+   
     <div class="heading m">
-      <span>transport!</span>
-      <h1>details  transport</h1>
+      <span>book your hotel!</span>
+      <h1>details new book hotel</h1>
    </div>
 
 
@@ -52,38 +41,32 @@
     <form method="#" action="#" >
 
       <div class="inputBox">
-      <label for="date_tra"> <span>The start date </span></label>
+      <label for="name"> <span>name </span></label>
       <p class="form-control">
-        <%= objtransport.date_tra %>
+        <%= objBookhotel.name %>
     </p>
     </div>
     <div class="inputBox">
-      <label for="date_rest_tra"> <span>The date of return </span></label>
+      <label for="email"> <span>The date of return </span></label>
       
       <p class="form-control">
-        <%= objtransport.date_rest_tra %>
+        <%= objBookhotel.email %>
     </p>
     </div>
     <div class="inputBox">
-      <label for="prix_tra"> <span>transport prix </span></label>
+      <label for="Num_tel"> <span>hotel prix </span></label>
       <p class="form-control">
-        <%= objtransport.prix_tra %>
+        <%= objBookhotel.Num_tel %>
     </p>
     </div>
+    
     <div class="inputBox">
-      <label for="mp_tra"> <span>company transport </span></label>
-      
-      <p class="form-control">
-        <%= objtransport.cmp_tra %>
-    </p>
-    </div>
-    <div class="inputBox">
-      <label for="typ_tra"> <span>type </span></label>
+      <label for="hotel"> <span>type </span></label>
       <p class="form-control">
 
-      
+       
           <td>
-             <%= objtransport.typ_tra.name %>
+             <%= objBookhotel.room.hotel.name %>
          </td>
         
     </p>
@@ -91,34 +74,30 @@
     
 
       
-       
     <% if (!user) { %>
 
-      <a class="btn create" href="/BookTransport/bookUser/<%= objtransport._id %>">book</a>
 
-
+      
       
       <% } else { %>
                   
       
         <% if (user.role === 'admin') { %>
-          <button data-linkid="<%= objtransport._id %>" class="btn create">
-            Delete this transport
+          <button data-linkid="<%= objBookhotel._id %>" class="btn create">
+            Delete this book hotel
         </button>
-
-
-          <!-- <a class="btn create" href="/admin/book/Book/<%= objtransport._id %>">book</a> -->
+         
   
         <% } else { %>
-          <a class="btn create" href="/BookTransport/bookUser/<%= objtransport._id %>">book</a>
+          <button data-linkid="<%= objBookhotel._id %>" class="btn create">
+            Delete this book hotel
+        </button>
         <%}  %>
         
         
-       
+      
       <%}  %>
-
-
-
+     
 
     </form>
 
@@ -139,7 +118,7 @@
 
 <script>
     const btnelement = document.querySelector(".create")
-    const transportId = btnelement.getAttribute("data-linkid");
+    const hotelId = btnelement.getAttribute("data-linkid");
 
 
     //  what is data ?
@@ -148,7 +127,7 @@
 
     btnelement.addEventListener("click", (eo) => {
 
-        fetch(`/admin/transport/transport/${transportId}`, { method: "DELETE" })
+        fetch(`/admin/Bookhotel/Bookhotel/${hotelId}`, { method: "DELETE" })
             .then((response) => response.json())
             .then((data) => window.location.href = data.mylink)
             .catch((err) => {
@@ -159,10 +138,6 @@
 
 
 </script>
-
-
-
-
 
 
 

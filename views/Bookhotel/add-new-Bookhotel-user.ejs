@@ -1,0 +1,83 @@
+
+
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<!-- header section starts  -->
+<% if (!user) { %>
+  <%- include("../partials/header") %>
+  <% } else { %>
+    <% if (user.role === 'admin') { %>
+      <%- include("../partials/header_admin.ejs") %>
+      <%- include("../partials/sidebar.ejs") %>
+    <% } else { %>
+      <%- include("../partials/header") %>
+    <%}  %>
+  <%}  %>
+
+<section class="Trips-form" >
+    
+
+    <div class="heading m">
+      <span> hotel!</span>
+      <h1>Book hotel</h1>
+      <a data-aos="zoom-in-left" data-aos-delay="1300" href="/Bookhotel" class="btn">Book hotel your</a>
+
+   </div>
+
+
+
+    
+    <form method="POST" action="/Bookhotel" >
+
+    
+      <div class="inputBox">
+      <label for="name"> <span>name</span></label>
+        <input name="name" id="name" type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="email"> <span>email  </span></label>
+      <input name="email" id="email" type="date" />
+    </div>
+    <div class="inputBox">
+      <label for="Num_tel"> <span>phone number </span></label>
+    <input name="Num_tel" id="Num_tel" type="number" />
+    </div>
+    
+   
+    <div class="inputBox">
+            
+     
+       
+    <input name="room" id="room" type="text" value='<%= objroom._id %>' style="display: none;" />
+
+     
+
+    
+      <button class="btn">create</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->
+
+
+
+

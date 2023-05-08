@@ -1,5 +1,5 @@
 
-   <%- include("../partials/head") %> 
+<%- include("../partials/head") %> 
 
    
 <!-- header section starts  -->
@@ -25,7 +25,7 @@
    
    <section data-aos="zoom-in-left" data-aos-delay="2050" class="transport" >  
     <div class="heading m">
-      <span>All book transport</span>
+      <span>All book hotel</span>
     
    </div>
 <br>
@@ -37,7 +37,7 @@
         <th >Processes </th>
         <th scope="col">name </th>
         <th scope="col" >date</th>
-        <th scope="col">transport prix </th>
+        <th scope="col">hotel prix </th>
       </tr>
     </thead>
 
@@ -46,13 +46,13 @@
 
       <tr >
         
-        <% arrBookTranspot.forEach(item=> { %>
+        <% arrBookhotel.forEach(item=> { %>
                
          
-  
-
+         <% if (user) { %>
+         <% if ( item.user_id == user._id ) { %>
 <td>
-  <a  href="/admin/BookTranspor/BookTranspor/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
+  <a  href="/Bookhotel/BookTranspor/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
 
          </td>
          
@@ -62,12 +62,12 @@
          </td>
 
          <td>
-           <%= item.transport.prix_tra %>
+           <%= item.room.title %>
        </td>   
   
 
            <td>
-              <%= item.transport.prix_tra %>
+              <%= item.room.title %>
            </td>
 
 
@@ -89,7 +89,9 @@
        
      
            
-         
+       <%}  %>
+       <%}  %>
+
            
          
        <% }); %> 

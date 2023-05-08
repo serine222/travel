@@ -1,0 +1,93 @@
+
+
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<!-- header section starts  -->
+<% if (user.role === 'admin') { %>
+  <%- include("../partials/header_admin.ejs") %>
+  <%- include("../partials/sidebar.ejs") %>
+
+
+<% } else { %>
+            
+<%- include("../partials/header") %>
+
+<%}  %>
+
+<section class="Trips-form" >
+ 
+
+    <div class="heading m">
+    
+      <h1>room</h1>
+   </div>
+
+
+
+    
+    <form method="POST" action="/admin/hotel/room" enctype="multipart/form-data">
+
+      <div class="inputBox">
+      <label for="title"> <span> title </span></label>
+      <input name="title" id="title" type="text" />
+    </div>
+
+
+    <div class="inputBox">
+      <label for="price"> <span> price</span> </label>
+      <input name="price" id="price" type="number" />
+    </div>
+
+    <div class="inputBox">
+      <label for="maxPeople"> <span> maxPeople</span> </label>
+      <input name="maxPeople" id="maxPeople" type="number" />
+    </div>
+
+    <div class="inputBox">
+      <label for="photoroom"> <span>photo</span></label>
+    <input name="photoroom" id="photoroom" type="file" />
+    </div>
+  
+    <div class="inputBox">
+      <label for="desc"> <span> desc</span> </label>
+      <input name="desc" id="desc" type="text" />
+    </div> 
+
+    <div class="inputBox">
+    <select class="custom-select mr-sm-2" name="hotel">
+      <option selected disabled> hotel</option>
+      <% arrhotel.forEach(item=> { %>
+        
+  <option value='<%= item._id %>'>  <%= item.name %> </option>
+  
+  <% }); %>  
+  </select>
+</div>
+
+
+
+      
+      <button class="btn">create</button>
+
+    </form>
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->

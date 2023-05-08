@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <%- include("../partials/head") %>
+
+  
+
+
+<body>
+   
+<!-- header section starts  -->
+
+<% if (user) { %>
+    <!-- header section starts  -->
+    
+    <!-- header section starts  -->
+    <% if (user.role === 'admin') { %>
+      <%- include("../partials/header_admin.ejs") %>
+      <%- include("../partials/sidebar.ejs") %>
+    
+    
+    <% } else { %>
+                
+    <%- include("../partials/header") %>
+    
+    <%}  %>
+    
+    <%}  %>
+    <%- include("../partials/header") %>
+    
+
+
+
+<!-- header section ends -->
+
+<section class="about" >
+
+   <div class="video-container m" data-aos="fade-right" data-aos-delay="300">
+       <img src="/images/des-4.jpg" alt=""></img>
+       <img src="<%= '/images/photohotel/' + objroom.photo%>" alt="">
+
+     
+   </div>
+
+   <div class="content" data-aos="fade-left" data-aos-delay="600">
+    <h3><%=objroom.name %></h3>
+    <p> <%=objroom.maxPeople %></p>
+    <p> <%=objroom.desc %></p>
+    <p> <%=objroom.title %></p>
+    <p> <%=objroom.hotel.name %></p>
+
+       <!-- <a href="#" class="btn">read more</a> -->
+
+
+
+
+    <% if (!user) { %>
+
+        <a class="btn create" href="/Bookhotel/bookUser/<%=objroom._id %>">book</a>
+  
+        
+        
+        <% } else { %>
+                    
+        
+          <% if (user.role === 'admin') { %>
+            <button data-linkid="<%= objroom._id %>" class="btn create">
+                Delete this room
+            </button>
+        
+            <!-- <a class="btn create" href="/admin/book/Book/<%= objroom._id %>">book</a> -->
+    
+          <% } else { %>
+            <a class="btn create" href="/Bookhotel/bookUser/<%= objroom._id %>">book</a>
+        
+          
+          <%}  %>
+          
+          
+         
+        <%}  %>
+
+</section>
+<%- include("../partials/footer.ejs") %>
+
+<script>
+    const btnelement = document.querySelector(".create")
+    const roomId = btnelement.getAttribute("data-linkid");
+
+
+    //  what is data ?
+    // {mylink: "/room" }
+
+
+    btnelement.addEventListener("click", (eo) => {
+
+        fetch(`/admin/hotel/room/${roomId}`, { method: "DELETE" })
+            .then((response) => response.json())
+            .then((data) => window.location.href = data.mylink)
+            .catch((err) => {
+                console.log(err);
+            });
+    })
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

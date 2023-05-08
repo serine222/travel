@@ -16,6 +16,7 @@ router.get("/",transportController.transport_index_get );
 router.get("/transport/:id", transportController.transport_details_get);
 
 
+router.get("/all-transport",transportController.get_alltransport );
 
 
 

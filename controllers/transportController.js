@@ -45,6 +45,7 @@ const transport_add = (req, res) => {
 
 const transport_post = (req, res) => {
  
+ 
 
 
     let transports = new transport ({
@@ -53,9 +54,11 @@ const transport_post = (req, res) => {
     dure_ofr: req.body.dure_ofr,
     prix_tra: req.body.prix_tra,
     cmp_tra: req.body.cmp_tra,
+    phototransport: req.file.filename,
     typ_tra: req.body.typ_tra,
       created_at: Date.now()
   })
+  
 
 
     //  console.log(req.body)
@@ -92,6 +95,32 @@ try {
 
 };
 
+
+const get_alltransport = async (req, res) => {
+    
+ 
+
+  try {
+
+    const arrtransport = await transport.find().populate('typ_tra');
+
+  
+    res.json(arrtransport);
+  } 
+  catch (err) {
+    console.error(err);
+
+  }
+
+
+
+};
+
+
+
+
+
+
 const transport_delete = (req, res) => {
     
     transport.findByIdAndDelete(req.params.id)
@@ -113,4 +142,5 @@ module.exports = {
     transport_details_get,
     transport_delete,
     transport_add,
+    get_alltransport,
 };

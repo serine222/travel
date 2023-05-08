@@ -1,0 +1,219 @@
+
+   <%- include("../partials/head") %> 
+
+   
+<!-- header section starts  -->
+
+<!-- header section starts  -->
+<% if (!user) { %>
+
+
+   <%- include("../partials/header") %>
+   
+   <% } else { %>
+               
+   
+     <% if (user.role === 'admin') { %>
+       <%- include("../partials/header_admin.ejs") %>
+       <%- include("../partials/sidebar.ejs") %>
+     <% } else { %>
+       <%- include("../partials/header") %>
+     
+     <%}  %>
+     
+     
+   
+   <%}  %>
+
+
+
+   
+
+  
+   
+    <section class="book-offre" id="book-home ">
+
+      <div class="heading m">
+         <span>our hotel</span>
+         <h1>rooms</h1>
+
+     </div>
+     
+      <div class="form">
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+          <span>Room name</span>
+    
+    
+          <input
+            type="text"
+            placeholder="place name"
+            id="ville_dep_ofr-input"
+            value=""
+          />
+         
+    
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+          <span>max People</span>
+          <input type="date" id="departure-date-input" />
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+          <span>max Price?</span>
+          <input type="number" placeholder="max Price" id="prix_ofr-input" />
+        </div>
+        
+    
+        <button
+        onclick="filterrooms()"
+        data-aos="zoom-in"
+        data-aos-delay="600"
+        class="btn"
+      >
+        find now
+      </button>
+    </div>
+    </section>
+
+ 
+
+
+
+
+   
+
+<section class="destination" id="destination">
+   <div class="heading m">
+     
+      <a data-aos="zoom-in-left" data-aos-delay="1300" href="/Bookhotel/add-new-Bookhotel" class="btn">Book hotel</a>
+      <div class="heading m">
+     
+        <span>All room</span>
+     </div>   </div>
+
+   
+   <div class="box-container">
+
+      
+       
+      <% arrroom.forEach(item=> { %>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="600">
+          <div class="image">
+  
+              <img src="<%= '/images/photohotel/' + item.photoroom%>" alt="">
+
+          </div>
+          <div class="content">
+              <h3><%= item.title %></h3>
+              <p><%= item.desc %>.</p>
+              <a  href="/hotel/room/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
+              
+              
+          </div>
+      </div>
+
+             <% }); %>  
+      
+
+      
+
+   </div>
+
+</section>
+
+      
+
+
+
+
+<!-- footer section starts  -->
+
+<%- include("../partials/footer") %>
+
+<!-- footer section ends -->
+
+
+
+
+
+<script>
+  function filterrooms() {
+    const title = document.getElementById("ville_dep_ofr-input").value;
+    const maxPeople = document.getElementById("departure-date-input").value;
+    const price = document.getElementById("prix_ofr-input").value;
+
+    // Send an AJAX request to the server to fetch the list of rooms
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        const arroroom = JSON.parse(this.responseText);
+
+       // Filter the list of rooms based on user input
+            const filteredrooms = arrorooms.filter((room) => {
+              if (
+               title &&
+                !room.title
+                  .toLowerCase()
+                  .includes(title.toLowerCase())
+              ) {
+                return false;
+              }
+              if (maxPeople && maxPeople !== room.maxPeople) {
+                return false;
+              }
+              if (price && price > room.price) {
+                return false;
+              }
+
+              return true;
+            });
+
+        // Dynamically populate the list of filtered rooms
+        const roomList = document.querySelector(".box-container");
+
+        if (filteredrooms.length === 0) {
+          roomList.innerHTML = "<span>start your adventures</span>";
+          return;
+        }
+
+        roomList.innerHTML = "";
+
+        filteredrooms.forEach((room) => {
+          const box = document.createElement("div");
+          box.classList.add("box");
+          roomList.appendChild(box);
+
+
+
+          const image = document.createElement("div");
+          image.classList.add("image");
+          box.appendChild(image);
+
+          const img = document.createElement("img");
+          img.src = "/images/des-4.jpg";
+          image.appendChild(img);
+
+          const content = document.createElement("div");
+          content.classList.add("content");
+          box.appendChild(content);
+
+          const h3 = document.createElement("h3");
+          content.appendChild(h3);
+          h3.innerHTML = `${room.title}`;
+
+          const p = document.createElement("p");
+          content.appendChild(p);
+          p.innerHTML = `${room.address}`;
+
+          const a = document.createElement("a");
+          content.appendChild(a);
+          a.innerHTML = `read more`;
+
+          a.href = `/room/${room._id}`;
+        });
+      }
+    };
+    xhr.open("GET", "/room/all-room", true);
+    xhr.send();
+  }
+</script>

@@ -9,6 +9,88 @@
 
 
    <%- include("../partials/header") %>
+
+
+   <section class="book-offre" id="book-home ">
+
+      <div class="heading m">
+         <a data-aos="zoom-in-left" data-aos-delay="1300" href="/BookTransport/add-new-BookTranspor" class="btn">Book Transport</a>
+
+        
+         <h1>transport</h1>
+
+     </div>
+     
+      <div class="form">
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+          <span>Transportation type</span>
+    
+    
+          <input
+            type="text"
+            placeholder="place name"
+            id="ville_dep_ofr-input"
+            value=""
+          />
+         
+    
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+          <span>date</span>
+          <input type="date" id="departure-date-input" />
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+          <span>max Price?</span>
+          <input type="number" placeholder="max Price" id="prix_ofr-input" />
+        </div>
+        
+    
+        <button
+        onclick="filterrooms()"
+        data-aos="zoom-in"
+        data-aos-delay="600"
+        class="btn"
+      >
+        find now
+      </button>
+    </div>
+    </section>
+
+
+   <section class="destination" id="destination">
+      
+   
+   <br>
+     
+      <div class="box-container">
+   
+         
+          
+          <% arrtransport.forEach(item=> { %>
+   
+          <div class="box" data-aos="fade-up" data-aos-delay="600">
+              <div class="image">
+                  <img src="<%= '/images/phototransport/' + item.phototransport%>" alt="">
+              </div>
+              <div class="content">
+                  <h3><%= item.typ_tra.name %></h3>
+                  <p><%=  item.prix_tra %>da</p>
+                  <p><%=  item.date_tra %></p>
+   
+                  <a  href="/offre/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
+             
+                  
+              </div>
+          </div>
+   
+                <% }); %>  
+         
+   
+         
+   
+      </div>
+   
+   </section>
    
    <% } else { %>
                
@@ -16,8 +98,166 @@
      <% if (user.role === 'admin') { %>
        <%- include("../partials/header_admin.ejs") %>
        <%- include("../partials/sidebar.ejs") %>
+
+
+       <section data-aos="zoom-in-left" data-aos-delay="2050" class="transport" >  
+
+         <div class="heading m">
+          
+           <a data-aos="zoom-in-left" data-aos-delay="1300" href="/BookTransport/add-new-BookTranspor" class="btn">Book Transport</a>
+           <div class="heading m">
+          
+             <span>All transport</span>
+          </div>   </div>
+     
+     <br>
+     <table>
+        <%- include('../partials/flashMessages') -%>
+     
+        <thead>
+           <tr>  
+              <th >Processes </th>
+              <th scope="col">name </th>
+              <th scope="col">transport prix</th>
+              <th scope="col">data </th>
+     
+           </tr>
+         </thead>
+     
+         <tbody>
+           <tr >
+             
+             <% arrtransport.forEach(item=> { %>
+              
+     
+              <td>
+               <a  href="/transport/transport/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
+     
+              </td>
+              
+             
+     
+             
+              
+     
+               <td>
+                  <%= item.typ_tra.name %>
+              </td>
+     
+             
+     
+                <td>
+                   <%= item.prix_tra %>da
+                </td>
+              
+              
+              <td>
+                  <%= item.date_tra %>
+              </td>
+              
+     
+     
+            
+             <tr class="spacer"><td colspan="100"></td></tr>
+     
+            </tr>
+            <% }); %>  
+     
+     
+         </tbody>
+        </table>
+        </div>
+     
+     
+             
+           </section>
+        </div>
+        </div>
+
+
+
+
      <% } else { %>
        <%- include("../partials/header") %>
+
+       <section class="book-offre" id="book-home ">
+
+         <div class="heading m">
+            <a data-aos="zoom-in-left" data-aos-delay="1300" href="/BookTransport/add-new-BookTranspor" class="btn">Book Transport</a>
+   
+           
+            <h1>transport</h1>
+   
+        </div>
+        
+         <div class="form">
+           <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+             <span>Transportation type</span>
+       
+       
+             <input
+               type="text"
+               placeholder="place name"
+               id="ville_dep_ofr-input"
+               value=""
+             />
+            
+       
+           </div>
+           <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+             <span>date</span>
+             <input type="date" id="departure-date-input" />
+           </div>
+           <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+             <span>max Price?</span>
+             <input type="number" placeholder="max Price" id="prix_ofr-input" />
+           </div>
+           
+       
+           <button
+           onclick="filterrooms()"
+           data-aos="zoom-in"
+           data-aos-delay="600"
+           class="btn"
+         >
+           find now
+         </button>
+       </div>
+       </section>
+
+        
+  <section class="destination" id="destination">
+  
+     
+     <div class="box-container">
+  
+        
+         
+         <% arrtransport.forEach(item=> { %>
+  
+         <div class="box" data-aos="fade-up" data-aos-delay="600">
+             <div class="image">
+                 <img src="<%= '/images/phototransport/' + item.phototransport%>" alt="">
+             </div>
+             <div class="content">
+                 <h3><%= item.typ_tra.name%></h3>
+                 <p><%=  item.prix_tra %>da</p>
+                 <p><%=  item.date_tra %>.</p>
+  
+                 <a  href="/offre/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
+            
+                 
+             </div>
+         </div>
+  
+               <% }); %>  
+        
+  
+        
+  
+     </div>
+  
+  </section>
      
      <%}  %>
      
@@ -34,82 +274,7 @@
  
  
  
-       
-   <section data-aos="zoom-in-left" data-aos-delay="2050" class="transport" >  
-
-    <div class="heading m">
-     
-      <a data-aos="zoom-in-left" data-aos-delay="1300" href="/BookTransport/add-new-BookTranspor" class="btn">Book Transport</a>
-      <div class="heading m">
-     
-        <span>All transport</span>
-     </div>   </div>
-
-<br>
-<table>
-   <%- include('../partials/flashMessages') -%>
-
-   <thead>
-      <tr>  
-         <th >Processes </th>
-         <th scope="col">name </th>
-         <th scope="col">transport prix</th>
-         <th scope="col">data </th>
-
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr >
-        
-        <% arrtransport.forEach(item=> { %>
-         
-
-         <td>
-          <a  href="/transport/transport/<%= item._id  %>">read more <i class="fas fa-angle-right"></i></a>
-
-         </td>
-         
-        
-
-        
-         
-
-          <td>
-             <%= item.typ_tra.name %>
-         </td>
-
-        
-
-           <td>
-              <%= item.prix_tra %>
-           </td>
-         
-         
-         <td>
-             <%= item.date_tra %>
-         </td>
-         
-
-
-       
-        <tr class="spacer"><td colspan="100"></td></tr>
-
-       </tr>
-       <% }); %>  
-
-
-    </tbody>
-   </table>
-   </div>
-
-
-        
-      </section>
-   </div>
-   </div>
-      
-
+   
 
 
 
@@ -118,3 +283,86 @@
 <%- include("../partials/footer") %>
 
 <!-- footer section ends -->
+
+
+<script>
+   function filtertransports() {
+     const typ_tra = document.getElementById("ville_dep_ofr-input").value;
+     const date_tra = document.getElementById("departure-date-input").value;
+     const prix_tra = document.getElementById("prix_ofr-input").value;
+ 
+     // Send an AJAX request to the server to fetch the list of transports
+     const xhr = new XMLHttpRequest();
+     xhr.onreadystatechange = function () {
+       if (this.readyState == 4 && this.status == 200) {
+         const arrotransport = JSON.parse(this.responseText);
+ 
+        // Filter the list of transports based on user input
+             const filteredtransports = arrotransports.filter((transport) => {
+               if (
+                typ_tra &&
+                 !transport.typ_tra.name
+                   .toLowerCase()
+                   .includes(typ_tra.toLowerCase())
+               ) {
+                 return false;
+               }
+               if (date_tra && date_tra !== transport.date_tra) {
+                 return false;
+               }
+               if (prix_tra && prix_tra > transport.prix_tra) {
+                 return false;
+               }
+ 
+               return true;
+             });
+ 
+         // Dynamically populate the list of filtered transports
+         const transportList = document.querySelector(".box-container");
+ 
+         if (filteredtransports.length === 0) {
+           transportList.innerHTML = "<span>start your adventures</span>";
+           return;
+         }
+ 
+         transportList.innerHTML = "";
+ 
+         filteredtransports.forEach((transport) => {
+           const box = document.createElement("div");
+           box.classList.add("box");
+           transportList.appendChild(box);
+ 
+ 
+ 
+           const image = document.createElement("div");
+           image.classList.add("image");
+           box.appendChild(image);
+ 
+           const img = document.createElement("img");
+           img.src = "/images/des-4.jpg";
+           image.appendChild(img);
+ 
+           const content = document.createElement("div");
+           content.classList.add("content");
+           box.appendChild(content);
+ 
+           const h3 = document.createElement("h3");
+           content.appendChild(h3);
+           h3.innerHTML = `${transport.typ_tra}`;
+ 
+           const p = document.createElement("p");
+           content.appendChild(p);
+           p.innerHTML = `${transport.address}`;
+ 
+           const a = document.createElement("a");
+           content.appendChild(a);
+           a.innerHTML = `read more`;
+ 
+           a.href = `/transport/${transport._id}`;
+         });
+       }
+     };
+     xhr.open("GET", "/transport/all-transport", true);
+     xhr.send();
+   }
+ </script>

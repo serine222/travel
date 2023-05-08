@@ -9,7 +9,7 @@ const transportSchema = new Schema({
     required: true
 },
 date_rest_tra : {
-    type:  Date,
+    type:  String,
     required: true
 },
 prix_tra: {
@@ -17,7 +17,7 @@ prix_tra: {
     required: true
 },
 cmp_tra:{
-    type:  Date,
+    type:  String,
     required: true
 },
 
@@ -26,6 +26,10 @@ typ_tra: {
   ref: 'typ_tra'
 },
 
+phototransport: {
+  type: String,
+  required: true
+},
 created_at: {
   type: Date,
   required: true

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const transportController = require("../../controllers/transportController");
 isAuthenticated = (req,res,next) => {
     if (req.isAuthenticated()) return next()
     res.redirect('/users/login')
@@ -14,19 +14,40 @@ function isAdmin(req, res, next) {
       res.redirect('/login');
     }
   }
+
+
+  router.get("/add-new-transport",isAuthenticated,isAdmin,transportController.transport_add);
+
+const multer = require("multer")
+// configure multer 
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/images/phototransport')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + '.png') 
+    }
+  })
+
+  var upload = multer({ storage: storage })
+
+
+
+
+ 
+
+router.post("/",isAuthenticated,isAdmin,upload.single('phototransport'),transportController.transport_post);
   
   
 
 
 // const transport = require("../models/atransportSchema");
 
-const transportController = require("../../controllers/transportController");
 
 
 
-router.get("/add-new-transport",isAuthenticated,isAdmin,transportController.transport_add);
 
-router.post("/",isAuthenticated,isAdmin,transportController.transport_post);
+
 
 
 router.get("/",isAuthenticated,isAdmin,transportController.transport_index_get );

@@ -11,6 +11,7 @@ const BookTranspor_index_get = async (req, res) => {
 
   try {
     const arrBookTranspot = await BookTranspor.find().populate('transport');
+
     res.render('BookTransport/BookTransport', {  mytitle: "BookTransport", arrBookTranspot });
   } 
   catch (err) {
