@@ -128,37 +128,7 @@ const room_post = (req, res) => {
 const hotel_post = (req, res) => {
  
   const multer = require("multer")
-  // configure multer 
-  
-
-  //   let Hotel = new hotel ({
-  //   name: req.body.name,
-  //   type: req.body.type,
-  //   city: req.body.city,
-  //   address: req.body.address,
-  //   distance: req.body.distance,
-
-  //   photohotel: req.file.filename,
-  //   title: req.body.title,
-  //   desc: req.body.desc,
-  //   rating: req.body.rating,
-  //   cheapestprice: req.body.cheapestprice,
-  //   featured: req.body.featured,
-  //     created_at: Date.now()
-
-  // })
-
-
-  //   //  console.log(req.body)
-  
-  //   Hotel
-  //     .save()
-  //     .then((result) => {
-  //       res.redirect("/hotel");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+ 
 
       const errors = validationResult(req)
       if( !errors.isEmpty()) {
@@ -247,24 +217,48 @@ const hotel_room_details_get = async (req, res) => {
     console.error(err);
    
   }
+
+
   
   };
 
 
 
 
-const hotel_delete = (req, res) => {
+const hotel_delete = async(req, res) => {
     
   hotel.findByIdAndDelete(req.params.id)
 
-    .then((params) => {
-      res.json({ mylink: "/hotel" });
-    })
+  .then((params) => {
+    rooms.forEach(item=> {
 
-    .catch((err) => {
-      console.log(err);
-    });
+      if (item.hotel == req.params.id) {
+        rooms.findByIdAndDelete(item._id)
+        .then((params) => {
+          res.json({ mylink: "/hotel" });
+        })
+    
+        .catch((err) => {
+          console.log(err);
+        });
 
+      }
+    
+      else {
+      
+        res.json({ mylink: "/hotel" });
+      }
+
+    }
+   
+    
+    )
+
+
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 };
 

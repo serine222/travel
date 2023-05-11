@@ -34,7 +34,7 @@ router.get('/login',usersController.users_login);
 
 router.post('/login',  
 passport.authenticate('local.login', {
-  successRedirect: '/users/profile',
+  successRedirect: '/',
     failureRedirect: '/users/login',
     failureFlash: true 
   }) 
